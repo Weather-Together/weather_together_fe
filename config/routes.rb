@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/rounds/public', to: 'rounds#public_show'
+
+  post '/save_coordinates', to: 'coordinates#save'
+
   
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
