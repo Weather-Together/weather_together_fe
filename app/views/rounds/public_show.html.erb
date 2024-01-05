@@ -8,7 +8,6 @@
       name="viewport"
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <!-- Replace version in the URL with desired library version -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -23,22 +22,32 @@
   </head>
   <body>
     <div id="map" class="map"></div>
-    <!-- Replace version in the URL with desired library version -->
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
     <script>
+      // Make a map
       var map = tt.map({
         key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
         container: "map"
       });
 
+      // set language to english
       // map.setLanguage(en-GB)
 
+      // Create a marker with an initial position
       var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
 
+      // Listener for click events
       map.on("click", function (event) {
         var { lng, lat } = event.lngLat;
+
+        // Update the marker position to the new clicked location
         marker.setLngLat([lng, lat]);
+
+        // Get the updated latitude and longitude
         var markerLngLat = marker.getLngLat();
+        var Latitude = markerLngLat.lat
+        
+        // Log Lat and Long in console
         console.log("Latitude:", markerLngLat.lat);
         console.log("Longitude:", markerLngLat.lng);
       });
