@@ -1,0 +1,3 @@
+class VotesFacade
+  
+end
