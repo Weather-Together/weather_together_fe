@@ -122,7 +122,7 @@ Weather Together is a game app where a daily set of weather data is displayed to
 
 The goal of this app is to provide public education and increase awareness of general global climate trends in a fun and interactive manner.
 
-This portion of the app handles the front end functionality of the game:
+This portion of the app handles the frontend functionality of the game:
 * Handles user account creation, verification, and login.
 * Provides the user interface for the app.
 * Collects user input through location guesses on an externally consumed interactive map and passes this information to the backend portion of the application.
