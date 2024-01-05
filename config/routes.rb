@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get '/rounds/public', to: 'rounds#public_show'
+
+  post '/save_coordinates', to: 'coordinates#save'
+
 end
