@@ -78,6 +78,7 @@
 ### Gems
 
 * [![saasc-rails][gem-saasc-rails]][gem-saasc-rails-url]
+* [![faraday-rails][gem-faraday-rails]][gem-faraday-rails-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -204,3 +205,5 @@ Project Link: [https://github.com/Weather-Together/weather_together_fe](https://
 [Bootstrap-url]: https://getbootstrap.com
 [gem-saasc-rails]: https://img.shields.io/badge/sassc--rails?style=flat-square&label=saasc-rails
 [gem-saasc-rails-url]: https://github.com/sass/sassc-rails
+[gem-faraday-rails]: https://img.shields.io/badge/faraday--rails?style=flat-square
+[gem-faraday-rails-url]: https://lostisland.github.io/faraday/#/
