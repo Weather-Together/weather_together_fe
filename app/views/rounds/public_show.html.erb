@@ -16,8 +16,8 @@
     />
     <style>
       #map {
-        width: 75vw;
-        height: 98vh;
+        width: 72vw;
+        height: 100vh;
       }
     </style>
   </head>
@@ -31,20 +31,17 @@
         container: "map"
       });
 
-      var markerLayer = tt.MarkerLayer({ draggable: true }).addTo(map);
+      // map.setLanguage(en-GB)
 
-      map.on('click', function (event) {
+      var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
+
+      map.on("click", function (event) {
         var { lng, lat } = event.lngLat;
-
-        markerLayer.setLngLat([lng, lat]);
-
-        displayCoordinates(lat, lng);
+        marker.setLngLat([lng, lat]);
+        var markerLngLat = marker.getLngLat();
+        console.log("Latitude:", markerLngLat.lat);
+        console.log("Longitude:", markerLngLat.lng);
       });
-
-      function displayCoordinates(lat, lng) {
-        var coordinatesElement = document.getElementById('coordinates');
-        coordinatesElement.textContent = 'Latitude: ' + lat + ', Longitude: ' + lng;
-      }
     </script>
   </body>
 </html>
