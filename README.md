@@ -1,23 +1,6 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -141,7 +124,7 @@ The goal of this app is to provide public education and increase awareness of ge
 This portion of the app handles the front end functionality of the game:
 * Handles user account creation, verification, and login.
 * Provides the user interface for the app.
-* Collects user input through location guesses on the interactive map and passes this information to the backend portion of the application.
+* Collects user input through location guesses on an externally consumed interactive map and passes this information to the backend portion of the application.
 * Displays results to the user calculcated from the backend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
