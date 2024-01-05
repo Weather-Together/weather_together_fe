@@ -8,8 +8,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  root 'welcome#index'
+
   get '/rounds/public', to: 'rounds#public_show'
 
   post '/save_coordinates', to: 'coordinates#save'
 
+  
+  get '/users/new', to: 'users#new'
+  post '/users', to: 'users#create'
+  get '/login', to: 'users#login_form'
+  post '/login', to: 'users#login'
+  post '/logout', to: 'users#logout'
 end
