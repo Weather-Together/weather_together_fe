@@ -8,82 +8,6 @@
       name="viewport"
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <!-- Replace version in the URL with desired library version -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
-    />
-    <style>
-      #map {
-        width: 72vw;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map" class="map"></div>
-    <!-- Replace version in the URL with desired library version -->
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
-    <script>
-      var map = tt.map({
-        key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
-        container: "map"
-      });
-
-      var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
-
-      map.on("click", function (event) {
-        var { lng, lat } = event.lngLat;
-        marker.setLngLat([lng, lat]);
-        var markerLngLat = marker.getLngLat();
-        
-        console.log("Latitude:", markerLngLat.lat);
-        console.log("Longitude:", markerLngLat.lng);
-
-        // Send data to the server
-        sendDataToServer(markerLngLat.lat, markerLngLat.lng);
-      });
-
-      function sendDataToServer(latitude, longitude) {
-        // Create an XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
-
-        // Specify the request type, URL, and set it to asynchronous
-        xhr.open("POST", "/save_coordinates", true);
-
-        // Set the request header
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        // Define the data to be sent as a JSON string
-        var data = JSON.stringify({ latitude: latitude, longitude: longitude });
-
-        // Set the callback function to handle the response
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            // Handle the response from the server if needed
-            console.log(xhr.responseText);
-          }
-        };
-
-        // Send the request with the data
-        xhr.send(data);
-      }
-    </script>
-  </body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta charset="UTF-8" />
-    <title>Public Game</title>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -107,7 +31,7 @@
       });
 
       // set language to english
-      // map.setLanguage(en-GB)
+      // map.setLanguage(en-GB);
 
       // Create a marker with an initial position
       var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
@@ -121,11 +45,19 @@
 
         // Get the updated latitude and longitude
         var markerLngLat = marker.getLngLat();
-        var Latitude = markerLngLat.lat
         
         // Log Lat and Long in console
         console.log("Latitude:", markerLngLat.lat);
         console.log("Longitude:", markerLngLat.lng);
+      });
+
+      // Listener for button click
+      document.getElementById("submitButton").addEventListener("click", function () {
+        // Get the current marker position
+        var markerLngLat = marker.getLngLat();
+
+        // Send data to the server
+        postJSON({ latitude: markerLngLat.lat, longitude: markerLngLat.lng });
       });
 
       async function postJSON(data) {
@@ -145,8 +77,10 @@
         }
       }
 
-      const data = { username: "example" };
+      const data = { lat: markerLngLat.lat, lng: markerLngLat.lng };
       postJSON(data);
     </script>
+
+    <%= button_to %>
   </body>
 </html>
