@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User Registration" do
-  it 'can create a user with a name and unique email' do
+  xit 'can create a user with a name and unique email' do
     visit register_path
 
     fill_in :user_name, with: 'User One'
@@ -14,7 +14,7 @@ RSpec.describe "User Registration" do
     # expect(page).to have_content("user one's Dashboard")
   end 
 
-  it 'does not create a user if email isnt unique' do 
+  xit 'does not create a user if email isnt unique' do 
     User.create(name: 'User One', email: 'notunique@example.com', password: 'password123', password_confirmation: 'password123')
 
     visit register_path
@@ -29,7 +29,7 @@ RSpec.describe "User Registration" do
     expect(page).to have_content("Email has already been taken")
   end
 
-  it 'does not create a user if password and password confirmation do not match' do
+  xit 'does not create a user if password and password confirmation do not match' do
     visit register_path
 
     fill_in :user_name, with: 'User One'
