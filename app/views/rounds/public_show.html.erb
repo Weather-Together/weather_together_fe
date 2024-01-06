@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>Public Game</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
+    />
+    <style>
+      #map {
+        width: 72vw;
+        height: 100vh;
+      }
+
+      #submitButton {
+        position: absolute;
+        width: 200px;
+        height: 120px;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='submitButton'>
+      <%= button_to 'Submit' %>
+    </div>
+    <div id="map" class="map"></div>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script>
+      // Make a map
+      var map = tt.map({
+        key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
+        container: "map"
+      });
+
+      // set language to english
+      // map.setLanguage(en-GB);
+
+      // Create a marker with an initial position
+      var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
+
+      // Listener for click events
+      map.on("click", function (event) {
+        var { lng, lat } = event.lngLat;
+
+        // Update the marker position to the new clicked location
+        marker.setLngLat([lng, lat]);
+
+        // Get the updated latitude and longitude
+        var markerLngLat = marker.getLngLat();
+        
+        // Log Lat and Long in console
+        console.log("Latitude:", markerLngLat.lat);
+        console.log("Longitude:", markerLngLat.lng);
+      });
+
+      // Listener for button click
+      document.getElementById("submitButton").addEventListener("click", function () {
+        // Get the current marker position
+        var markerLngLat = marker.getLngLat();
+
+        // Send data to the server
+        postJSON({ latitude: markerLngLat.lat, longitude: markerLngLat.lng });
+      });
+
+      async function postJSON(data) {
+        try {
+          const response = await fetch("http://localhost:3000/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
