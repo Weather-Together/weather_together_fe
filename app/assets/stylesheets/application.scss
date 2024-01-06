@@ -14,3 +14,23 @@
  *= require_self
  */
  @import "bootstrap";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically at the center */
+}
+
+.navbar-links {
+  display: flex; /* Make the list items flex containers */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  margin-left: 10px; /* Adjust the spacing between links as needed */
+}
+
+.navbar-links a:last-child {
+  margin-right: 10px; /* Adjust the spacing for the rightmost link */
+}

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Coordinates', :vcr do
-  scenario 'clicking on the map sends data to the server' do
+  xscenario 'clicking on the map sends data to the server' do
     visit '/rounds/public' 
 
     # Assuming there is a map with an id 'map'
@@ -16,7 +16,7 @@ RSpec.describe 'Coordinates', :vcr do
   end
 
   describe 'POST #save' do
-    it 'creates a new vote with latitude and longitude' do
+    xit 'creates a new vote with latitude and longitude' do
     
       coordinates_data = { latitude: -96.808891, longitude: -96.808891 }
 

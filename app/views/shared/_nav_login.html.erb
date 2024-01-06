@@ -1,0 +1,12 @@
+<div class="nav-container container-fluid">
+  <nav class="navbar navbar-light bg-light">
+    <div class="logo">
+      <%= link_to "/" do %>
+        <%= image_tag "/images/logo.png", style: 'height: 30px; margin-right: 10px;' %>
+      <% end %>
+    </div>
+    <div class="navbar-links">
+      <%= link_to 'Logout', logout_path %>
+    </div>
+  </nav>
+</div>
