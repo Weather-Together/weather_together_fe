@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login'
   post '/logout', to: 'users#logout'
+
+  get '/users/dashboard', to: 'users#show'
 end
