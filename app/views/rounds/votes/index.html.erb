@@ -1,1 +1,54 @@
-<%= render partial: "shared/nav_login" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Results</title>
+    <style>
+        /* Set height for the container */
+        body, html {
+            height: 100%;
+        }
+
+        /* Set height for columns to take up 80% of the vertical space */
+        .col-height {
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Logo Here</a>
+    </div>
+</nav>
+
+<!-- Content with Columns -->
+<div class="container-fluid h-100 mt-5">
+    <div class="row h-100">
+        <!-- First Column -->
+        <div class="col-md-6 bg-primary col-height d-flex align-items-start justify-content-center">
+            <!-- Content for the first column -->
+            <div class="text-center">
+                <h2>Today's Round</h2>
+                <p>Stats for today's public game</p>
+            </div>
+        </div>
+
+        <!-- Second Column -->
+        <div class="col-md-6 bg-secondary col-height d-flex align-items-start justify-content-center">
+            <!-- Content for the second column -->
+            <div class="text-center">
+                <h2>Personal Stats</h2>
+                <p>Stats from all games</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

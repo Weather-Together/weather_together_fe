@@ -19,76 +19,157 @@
       #map {
         width: 72vw;
         height: 100vh;
+        float: left;
       }
 
-      #submitButton {
+      #locationForm {
         position: absolute;
         width: 200px;
         height: 120px;
         right: 0;
         bottom: 0;
       }
+
+      /* Stack the grids vertically with text headers */
+      #gridContainer {
+        position: absolute;
+        width: 200px;
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for centering */
+        right: 0;
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start of the container */
+        gap: 10px; /* Adjust the gap between boxes */
+      }
+
+      /* Add styling for each grid box */
+      .gridBox {
+        width: 100%;
+        height: 50px; /* Adjust the height of each box as needed */
+        background-color: lightgray; /* Set the background color */
+        border: 1px solid gray; /* Add border for better visibility */
+      }
+
+      /* Add styling for text headers */
+      .gridHeader {
+        font-weight: bold;
+        margin-bottom: 5px; /* Adjust the margin between header and box */
+      }
     </style>
   </head>
   <body>
-    <div id='submitButton'>
-      <%= button_to 'Submit' %>
+    <div id="gridContainer">
+      <!-- Add a text header and a grid box for each item -->
+      <div>
+        <div class="gridHeader">High Temperature</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Low Temperature</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Humidity</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Wind Speed</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Air Quality</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Precipitation</div>
+        <div class="gridBox"></div>
+      </div>
     </div>
-    <div id="map" class="map"></div>
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
-    <script>
-      // Make a map
-      var map = tt.map({
-        key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
-        container: "map"
-      });
 
-      // set language to english
-      // map.setLanguage(en-GB);
+    <%# add route and controller action to send post request to BE %>
+    <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
+      <%= form.hidden_field :latitude, value: 'latitude' %>
+      <%= form.hidden_field :longitude, value: 'longitude' %>
+      <%= form.submit 'Submit' %>
+    <% end %>
 
-      // Create a marker with an initial position
-      var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
+    <div id="map" class="map">
+      <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+      <script>
+        // Make a map
+        var map = tt.map({
+          key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
+          container: "map"
+        });
 
-      // Listener for click events
-      map.on("click", function (event) {
-        var { lng, lat } = event.lngLat;
+        // set language to english
+        map.setLanguage(en-GB);
 
-        // Update the marker position to the new clicked location
-        marker.setLngLat([lng, lat]);
+        // Create a marker with an initial position
+        var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
 
-        // Get the updated latitude and longitude
-        var markerLngLat = marker.getLngLat();
-        
-        // Log Lat and Long in console
-        console.log("Latitude:", markerLngLat.lat);
-        console.log("Longitude:", markerLngLat.lng);
-      });
+        // Listener for click events
+        map.on("click", function (event) {
+          var { lng, lat } = event.lngLat;
 
-      // Listener for button click
-      document.getElementById("submitButton").addEventListener("click", function () {
-        // Get the current marker position
-        var markerLngLat = marker.getLngLat();
+          // Update the marker position to the new clicked location
+          marker.setLngLat([lng, lat]);
 
-        // Send data to the server
-        postJSON({ latitude: markerLngLat.lat, longitude: markerLngLat.lng });
-      });
+          // Get the updated latitude and longitude
+          var markerLngLat = marker.getLngLat();
 
-      async function postJSON(data) {
-        try {
-          const response = await fetch("http://localhost:3000/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
+          // Log Lat and Long in console
+          console.log("Latitude:", markerLngLat.lat);
+          console.log("Longitude:", markerLngLat.lng);
+
+          // Set the hidden input values in the form
+          document.getElementById("latitude").value = markerLngLat.lat;
+          document.getElementById("longitude").value = markerLngLat.lng;
+        });
+
+
+        // Pass data using form hidden fields and AJAX to route to congroller
+        document.getElementById("locationForm").addEventListener("submit", function(event) {
+          event.preventDefault();
+
+          // Fetch the form data
+          var formData = new FormData(this);
+
+          // Send an AJAX request to the Rails controller
+          fetch('/your_controller_action', {
+              method: 'POST',
+              body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log('Success:', data);
+              // Handle the success response if needed
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              // Handle the error if needed
           });
+        });
 
-          const result = await response.json();
-          console.log("Success:", result);
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-    </script>
+        // Using fetch API to execute post
+        // async function postJSON(data) {
+        //   try {
+        //     const response = await fetch("http://localhost:3000/", {
+        //       method: "POST",
+        //       headers: {
+        //         "Content-Type": "application/json",
+        //       },
+        //       body: JSON.stringify(data),
+        //     });
+
+        //     const result = await response.json();
+        //     console.log("Success:", result);
+        //   } catch (error) {
+        //     console.error("Error:", error);
+        //   }
+        // }
+      </script>
+    </div>
   </body>
 </html>
