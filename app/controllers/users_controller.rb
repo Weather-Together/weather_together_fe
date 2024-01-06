@@ -9,7 +9,9 @@ class UsersController < ApplicationController
       flash[:error] = "Passwords do not match"
       redirect_to "/users/new"
     else
-      service.post_url("/users/#{}", user_params)
+      # It would probably be more efficient to have a post endpoint /users/:email so we don't have an additional handshake here
+      user_info = service.get_url("/users/#{new_user.email}")
+      service.post_url("/users/#{user_info[:id]}", user_params)
       flash[:success] = "Welcome, #{new_user.name}!"
       redirect_to "/rounds/public"
     # else  
