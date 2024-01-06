@@ -1,1 +1,13 @@
 <%= render partial: "shared/nav_login" %>
+
+<%= form_with url: '/users', local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, required: true %><br>
+  <%= form.label :email %>
+  <%= form.text_field :email, required: true %><br>
+  <%= form.label :password %>
+  <%= form.password_field :password, required: true %><br>
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation, required: true %><br>
+  <%= form.submit "Submit" %>
+<% end %>
