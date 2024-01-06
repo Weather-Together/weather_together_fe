@@ -19,7 +19,7 @@
         height: 100vh;
       }
 
-      #submitButton {
+      #locationForm {
         position: absolute;
         width: 200px;
         height: 120px;
@@ -29,9 +29,12 @@
     </style>
   </head>
   <body>
-    <div id='submitButton'>
-      <%= button_to 'Submit' %>
-    </div>
+    <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
+      <%= form.hidden_field :latitude, lat: 'latitude' %>
+      <%= form.hidden_field :longitude, lng: 'longitude' %>
+      <%= form.submit 'Submit' %>
+    <% end %>
+
     <div id="map" class="map"></div>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
     <script>
@@ -42,12 +45,12 @@
       });
 
       // set language to english
-      // map.setLanguage(en-GB);
+      map.setLanguage(en-GB);
 
       // Create a marker with an initial position
       var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
 
-      // Listener for click events
+      Listener for click events
       map.on("click", function (event) {
         var { lng, lat } = event.lngLat;
 
@@ -60,33 +63,50 @@
         // Log Lat and Long in console
         console.log("Latitude:", markerLngLat.lat);
         console.log("Longitude:", markerLngLat.lng);
+
+        // Set the hidden input values in the form
+        document.getElementById("latitude").value = markerLngLat.lat;
+        document.getElementById("longitude").value = markerLngLat.lng;
       });
 
-      // Listener for button click
-      document.getElementById("submitButton").addEventListener("click", function () {
-        // Get the current marker position
-        var markerLngLat = marker.getLngLat();
+      document.getElementById("locationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-        // Send data to the server
-        postJSON({ latitude: markerLngLat.lat, longitude: markerLngLat.lng });
-      });
+        // Fetch the form data
+        var formData = new FormData(this);
 
-      async function postJSON(data) {
-        try {
-          const response = await fetch("http://localhost:3000/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
+        // Send an AJAX request to the Rails controller
+        fetch('/your_controller_action', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            // Handle the success response if needed
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle the error if needed
+        });
+    });
 
-          const result = await response.json();
-          console.log("Success:", result);
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
+      // async function postJSON(data) {
+      //   try {
+      //     const response = await fetch("http://localhost:3000/", {
+      //       method: "POST",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify(data),
+      //     });
+
+      //     const result = await response.json();
+      //     console.log("Success:", result);
+      //   } catch (error) {
+      //     console.error("Error:", error);
+      //   }
+      // }
     </script>
   </body>
 </html>
