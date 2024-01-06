@@ -29,6 +29,7 @@
     </style>
   </head>
   <body>
+    <%# add route and controller action to send post request to BE %>
     <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
       <%= form.hidden_field :latitude, lat: 'latitude' %>
       <%= form.hidden_field :longitude, lng: 'longitude' %>
@@ -69,6 +70,7 @@
         document.getElementById("longitude").value = markerLngLat.lng;
       });
 
+      // Pass data using form hidden fields and AJAX to route to congroller
       document.getElementById("locationForm").addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -91,6 +93,7 @@
         });
     });
 
+      // Using fetch API to execute post
       // async function postJSON(data) {
       //   try {
       //     const response = await fetch("http://localhost:3000/", {
