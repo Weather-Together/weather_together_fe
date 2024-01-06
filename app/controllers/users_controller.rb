@@ -2,19 +2,19 @@ class UsersController < ApplicationController
   def new; end
   
   def create
-    user = User.new(params)
+    new_user = User.new(user_params)
     service = UsersService.new
 
-    if user[:password] != user[:password_confirmation]
+    if user_params[:password] != user_params[:password_confirmation]
       flash[:error] = "Passwords do not match"
       redirect_to "/users/new"
     else
-      service.post_url("/users/#{}", "user params?")
-      flash[:success] = "Welcome, #{user.name}!"
+      service.post_url("/users/#{}", user_params)
+      flash[:success] = "Welcome, #{new_user.name}!"
       redirect_to "/rounds/public"
     # else  
     #   flash[:error] = new_user.errors.full_messages.to_sentence
-    #   redirect_to register_path
+    #   redirect_to "/users/new"
     end 
   end
 
@@ -28,9 +28,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # private 
+  private 
   
-  # def user_params 
-  #   params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  # end 
+  def user_params 
+    params.permit(:name, :email, :password, :password_confirmation)
+  end 
 end
