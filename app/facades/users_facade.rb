@@ -1,3 +1,3 @@
 class UsersFacade
-  
+
 end
