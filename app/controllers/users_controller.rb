@@ -3,13 +3,15 @@ class UsersController < ApplicationController
   
   def create
     user = User.new(params)
+    service = UsersService.new
 
     if user[:password] != user[:password_confirmation]
       flash[:error] = "Passwords do not match"
-      redirect_to register_path
-    elsif new_user.save
-      flash[:success] = "Welcome, #{new_user.name}!"
-      redirect_to user_path(new_user)
+      redirect_to "/users/new"
+    else
+      service.post_url("/users/#{}", "user params?")
+      flash[:success] = "Welcome, #{user.name}!"
+      redirect_to "/rounds/public"
     # else  
     #   flash[:error] = new_user.errors.full_messages.to_sentence
     #   redirect_to register_path
