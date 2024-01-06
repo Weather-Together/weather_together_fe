@@ -1,175 +1,110 @@
 <%= render partial: "shared/nav_login" %>
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta charset="UTF-8" />
-    <title>Public Game</title>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
-    />
-    <style>
-      #map {
-        width: 72vw;
-        height: 100vh;
-        float: left;
-      }
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8" />
+  <title>Public Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-      #locationForm {
-        position: absolute;
-        width: 200px;
-        height: 120px;
-        right: 0;
-        bottom: 0;
-      }
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
 
-      /* Stack the grids vertically with text headers */
-      #gridContainer {
-        position: absolute;
-        width: 200px;
-        top: 50%; /* Center vertically */
-        transform: translateY(-50%); /* Adjust for centering */
-        right: 0;
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start; /* Align items to the start of the container */
-        gap: 10px; /* Adjust the gap between boxes */
-      }
+  <!-- Include Bootstrap JS and TomTom Maps SDK -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-Y3UDbPn6TpSREZVeU2XsCMXvHznGfe1eVToKoWd40EvrKtkLoT/JOrme3Q+J5cpX"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N"
+    crossorigin="anonymous"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+  
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
 
-      /* Add styling for each grid box */
-      .gridBox {
-        width: 100%;
-        height: 50px; /* Adjust the height of each box as needed */
-        background-color: lightgray; /* Set the background color */
-        border: 1px solid gray; /* Add border for better visibility */
-      }
+    #map {
+      height: 80vh;
+    }
 
-      /* Add styling for text headers */
-      .gridHeader {
-        font-weight: bold;
-        margin-bottom: 5px; /* Adjust the margin between header and box */
-      }
-    </style>
-  </head>
-  <body>
-    <div id="gridContainer">
-      <!-- Add a text header and a grid box for each item -->
-      <div>
-        <div class="gridHeader">High Temperature</div>
-        <div class="gridBox"></div>
+    #markerInfoContainer {
+      padding: 15px;
+    }
+
+    #submitButtonContainer {
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <!-- TomTom Map Container -->
+        <div id="map" class="map"></div>
       </div>
-      <div>
-        <div class="gridHeader">Low Temperature</div>
-        <div class="gridBox"></div>
-      </div>
-      <div>
-        <div class="gridHeader">Humidity</div>
-        <div class="gridBox"></div>
-      </div>
-      <div>
-        <div class="gridHeader">Wind Speed</div>
-        <div class="gridBox"></div>
-      </div>
-      <div>
-        <div class="gridHeader">Air Quality</div>
-        <div class="gridBox"></div>
-      </div>
-      <div>
-        <div class="gridHeader">Precipitation</div>
-        <div class="gridBox"></div>
+      <div class="col-md-4">
+        <!-- Marker Information Container -->
+        <div id="markerInfoContainer">
+          <h4>Marker Information:</h4>
+          <p id="latitude">Latitude: </p>
+          <p id="longitude">Longitude: </p>
+        </div>
+
+        <!-- Bootstrap Button Styling -->
+        <div id="submitButtonContainer">
+          <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
+            <%= form.hidden_field :latitude, id: 'latitudeField' %>
+            <%= form.hidden_field :longitude, id: 'longitudeField' %>
+            <%= form.submit 'Submit', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
       </div>
     </div>
+  </div>
 
-    <%# add route and controller action to send post request to BE %>
-    <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
-      <%= form.hidden_field :latitude, value: 'latitude' %>
-      <%= form.hidden_field :longitude, value: 'longitude' %>
-      <%= form.submit 'Submit' %>
-    <% end %>
+<script>
+  var map = tt.map({
+    key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
+    container: "map"
+  });
 
-    <div id="map" class="map">
-      <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
-      <script>
-        // Make a map
-        var map = tt.map({
-          key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
-          container: "map"
-        });
+  // Get the initial center of the map
+  var initialCenter = map.getCenter();
 
-        // set language to english
-        map.setLanguage(en-GB);
+  // Create a marker with the initial position
+  var marker = new tt.Marker().setLngLat(initialCenter).addTo(map);
 
-        // Create a marker with an initial position
-        var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
+  // Update marker position when the map is dragged
+  map.on('dragend', function () {
+    var newCenter = map.getCenter();
+    marker.setLngLat(newCenter);
+  });
 
-        // Listener for click events
-        map.on("click", function (event) {
-          var { lng, lat } = event.lngLat;
+  map.on('click', function (event) {
+    var { lat, lng } = event.lngLat;
 
-          // Update the marker position to the new clicked location
-          marker.setLngLat([lng, lat]);
+    // Update marker position
+    marker.setLngLat([lng, lat]);
 
-          // Get the updated latitude and longitude
-          var markerLngLat = marker.getLngLat();
+    // Update latitude and longitude information
+    document.getElementById('latitude').innerText = 'Latitude: ' + lat;
+    document.getElementById('longitude').innerText = 'Longitude: ' + lng;
 
-          // Log Lat and Long in console
-          console.log("Latitude:", markerLngLat.lat);
-          console.log("Longitude:", markerLngLat.lng);
+    // Update hidden form fields
+    document.getElementById('latitudeField').value = lat;
+    document.getElementById('longitudeField').value = lng;
+  });
+</script>
 
-          // Set the hidden input values in the form
-          document.getElementById("latitude").value = markerLngLat.lat;
-          document.getElementById("longitude").value = markerLngLat.lng;
-        });
-
-
-        // Pass data using form hidden fields and AJAX to route to congroller
-        document.getElementById("locationForm").addEventListener("submit", function(event) {
-          event.preventDefault();
-
-          // Fetch the form data
-          var formData = new FormData(this);
-
-          // Send an AJAX request to the Rails controller
-          fetch('/your_controller_action', {
-              method: 'POST',
-              body: formData
-          })
-          .then(response => response.json())
-          .then(data => {
-              console.log('Success:', data);
-              // Handle the success response if needed
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              // Handle the error if needed
-          });
-        });
-
-        // Using fetch API to execute post
-        // async function postJSON(data) {
-        //   try {
-        //     const response = await fetch("http://localhost:3000/", {
-        //       method: "POST",
-        //       headers: {
-        //         "Content-Type": "application/json",
-        //       },
-        //       body: JSON.stringify(data),
-        //     });
-
-        //     const result = await response.json();
-        //     console.log("Success:", result);
-        //   } catch (error) {
-        //     console.error("Error:", error);
-        //   }
-        // }
-      </script>
-    </div>
-  </body>
+</body>
 </html>
