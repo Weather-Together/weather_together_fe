@@ -17,6 +17,7 @@
       #map {
         width: 72vw;
         height: 100vh;
+        float: left;
       }
 
       #locationForm {
@@ -26,9 +27,64 @@
         right: 0;
         bottom: 0;
       }
+
+      /* Stack the grids vertically with text headers */
+      #gridContainer {
+        position: absolute;
+        width: 200px;
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for centering */
+        right: 0;
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start of the container */
+        gap: 10px; /* Adjust the gap between boxes */
+      }
+
+      /* Add styling for each grid box */
+      .gridBox {
+        width: 100%;
+        height: 50px; /* Adjust the height of each box as needed */
+        background-color: lightgray; /* Set the background color */
+        border: 1px solid gray; /* Add border for better visibility */
+      }
+
+      /* Add styling for text headers */
+      .gridHeader {
+        font-weight: bold;
+        margin-bottom: 5px; /* Adjust the margin between header and box */
+      }
     </style>
   </head>
   <body>
+    <div id="gridContainer">
+      <!-- Add a text header and a grid box for each item -->
+      <div>
+        <div class="gridHeader">High Temperature</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Low Temperature</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Humidity</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Wind Speed</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Air Quality</div>
+        <div class="gridBox"></div>
+      </div>
+      <div>
+        <div class="gridHeader">Precipitation</div>
+        <div class="gridBox"></div>
+      </div>
+    </div>
+
     <%# add route and controller action to send post request to BE %>
     <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
       <%= form.hidden_field :latitude, lat: 'latitude' %>
@@ -51,7 +107,7 @@
       // Create a marker with an initial position
       var marker = new tt.Marker().setLngLat([0, 0]).addTo(map);
 
-      Listener for click events
+      // Listener for click events
       map.on("click", function (event) {
         var { lng, lat } = event.lngLat;
 
