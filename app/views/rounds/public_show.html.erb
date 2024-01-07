@@ -26,7 +26,7 @@
 
     #right-column {
       background-color: #78909c; /* Currently same as background */
-      color: #4C4C4C;
+      color: #455a64; /* Currently same as navbar */
       padding: 15px;
       box-sizing: border-box;
       height: 100vh;
@@ -43,6 +43,18 @@
       position: relative;
       bottom: 0;
       width: 100%;
+    }
+
+    .submit-button {
+      background-color: #3e77b2;
+      border: 1px solid #3e77b2;
+      color: #f0f0f0;
+      transition: background-color 0.3s ease
+    }
+
+    .submit-button:hover {
+      background-color: #004080;
+      border: 1px solid #004080;
     }
 
     #gridBox {
@@ -110,7 +122,7 @@
           <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
             <%= form.hidden_field :latitude, id: 'latitudeField' %>
             <%= form.hidden_field :longitude, id: 'longitudeField' %>
-            <%= form.submit 'Submit', class: 'btn btn-primary' %>
+            <%= form.submit 'Submit', class: 'btn btn-primary submit-button' %>
           <% end %>
         </div>
       </div>
