@@ -4,11 +4,10 @@ class UsersController < ApplicationController
 
   def login
     service = UsersService.new
-    id = service.get_url("/users/#{params[:user_email]}")[:id]
+    id = service.post_url("/users/#{params[:user_email]}")[:id]
     user_info = {
       email: params[:emailInput]
     }
-    service.post_url("/users/#{id}", user_info)
     session[:user_id] = id
     redirect_to '/rounds/public'
   end
