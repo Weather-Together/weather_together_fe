@@ -34,5 +34,33 @@ RSpec.describe UsersService, type: :service do
       # Add actual data structure
       # expect(response[:id]).to be_a(Integer)
     end
+
+    it '#send_login_info returns a hash with user id' do
+      # Stub for params[:user_email]
+      response = @service.send_login_info
+    
+      expect(response).to be_a(Hash)
+      # Add actual data structure
+    end
+
+    it '#previous_rounds returns a hash with previous round info' do
+      # Stub for session[:user_id]
+      response = @service.previous_rounds
+
+      expect(response).to be_a(Hash)
+      # Add actual data structure
+    end
+
+    it '#send_vote is hard to test' do
+      # Need to figure out the response for this one from BE (after handshake?)
+    end
+
+    it '#current_round returns a hash with detailed info for the current round' do
+      # Stub for session[:user_id]
+      response = @service.current_round
+
+      expect(response).to be_a(Hash)
+      # Add actual data structure
+    end
   end
 end
