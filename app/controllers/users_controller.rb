@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @previous_rounds_info = get_previous_rounds
   end
 
   def login
@@ -17,8 +18,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def previous_rounds_info
-    
+  def get_previous_rounds
+    service = UsersService.new
+    service.get_url("/users/#{session[:user_id]}/recent_rounds")
   end
 
   # def new; end
