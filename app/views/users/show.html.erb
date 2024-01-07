@@ -4,6 +4,16 @@
 <html lang="en">
 
 <head>
+  <style>
+    body, html {
+        height: 100%;
+    }
+
+    /* Set height for columns to take up 80% of the vertical space */
+    .col-height {
+        height: 80vh;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,7 +21,7 @@
   <div class="container-fluid">
     <div class="row">
       <!-- Column 1 with stacked sections -->
-      <div class="col-md-4 d-flex flex-column">
+      <div class="col-md-4 d-flex flex-column col-height">
         <div class="flex-fill">
           <h2>Section 1</h2>
           <p>This is the content of section 1.</p>
@@ -27,13 +37,13 @@
       </div>
 
       <!-- Column 2 -->
-      <div class="col">
+      <div class="col col-height">
         <h2>Fun Facts</h2>
         <p>Fun Facts Text Block</p>
       </div>
 
       <!-- Column 3 -->
-      <div class="col">
+      <div class="col col-height">
         <h2>Column 3</h2>
         <p>This is the content of the third column.</p>
       </div>
