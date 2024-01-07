@@ -15,6 +15,14 @@
  */
  @import "bootstrap";
 
- .navbar-nav .nav-item a.nav-link:hover {
+body {
+  background-color: #78909c;
+}
+
+.navbar-nav .nav-item a.nav-link:hover {
   color: #3498db;
+}
+
+.navbar {
+  background-color: #455a64;
 }
