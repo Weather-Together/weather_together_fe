@@ -6,6 +6,6 @@ class RoundsController < ApplicationController
       latitude: params[:latitude],
       longitude: params[:longitude]
     }
-    service.post_url("/users/#{sessiom[:user_id]}/rounds/#{round_id}", vote_info)
+    service.post_url("/users/#{session[:user_id]}/rounds/#{round_id}", vote_info)
   end
 end
