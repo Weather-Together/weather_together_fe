@@ -9,8 +9,7 @@
 
 <button id="signOutBtn" onclick="signOut();" data-onsuccess="onSignOutSuccess" class="g-signout2">Sign out</button>
 
-<%# controller routing needs to be updated %>
-<form action="/" method="post" id="userForm" style="display: none;">
+<form action="/login" method="post" id="userForm" style="display: none;">
   <input type="hidden" id="userIdInput" name="user_id">
   <input type="hidden" id="userNameInput" name="user_name" placeholder="User Name">
   <input type="hidden" id="emailInput" name="user_email" placeholder="Email">
