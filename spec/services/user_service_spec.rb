@@ -37,6 +37,8 @@ RSpec.describe UsersService, type: :service do
 
     it '#send_login_info returns a hash with user id' do
       # Stub for params[:user_email]
+      allow_any_instance_of(ActionController::Parameters).to receive(:[]).with(:user_email).and_return('test@example.com')
+      
       response = @service.send_login_info
     
       expect(response).to be_a(Hash)
@@ -45,6 +47,7 @@ RSpec.describe UsersService, type: :service do
 
     it '#previous_rounds returns a hash with previous round info' do
       # Stub for session[:user_id]
+      allow_any_instance_of(ActionController::Base).to receive(:session).and_return(user_id: 123)
       response = @service.previous_rounds
 
       expect(response).to be_a(Hash)
@@ -57,6 +60,7 @@ RSpec.describe UsersService, type: :service do
 
     it '#current_round returns a hash with detailed info for the current round' do
       # Stub for session[:user_id]
+      allow_any_instance_of(ActionController::Base).to receive(:session).and_return(user_id: 123)
       response = @service.current_round
 
       expect(response).to be_a(Hash)
