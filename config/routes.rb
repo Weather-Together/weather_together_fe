@@ -22,5 +22,4 @@ Rails.application.routes.draw do
   get '/users/dashboard', to: 'users#show'
 
   get '/rounds/votes/index', to: 'rounds/votes#index'
-
 end
