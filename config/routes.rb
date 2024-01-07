@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/rounds/public', to: 'rounds#public_show'
+  post '/rounds/public/submit', to: 'rounds#submit_vote'
   
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
@@ -22,5 +23,4 @@ Rails.application.routes.draw do
 
   get '/rounds/votes/index', to: 'rounds/votes#index'
 
-  
 end

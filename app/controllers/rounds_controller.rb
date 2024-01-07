@@ -1,5 +1,8 @@
 class RoundsController < ApplicationController
   def public_show
+  end
+
+  def submit_vote
     service = UsersService.new
     round_id = service.get_url("/rounds/current")[:id]
     vote_info = {
