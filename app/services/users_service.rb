@@ -9,6 +9,6 @@ class UsersService
   end
 
   def post_url(url, info)
-    response = conn.post(url, info)
+    response = conn.post(url, info, "Content-Type" => "application/json")
   end
 end

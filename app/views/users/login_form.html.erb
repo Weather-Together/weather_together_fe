@@ -7,36 +7,42 @@
 
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-<button id="signOutBtn" onclick="signOut();" data-onsuccess="onSignOutSuccess" class="g-signout2">Sign out</button>
+<button onclick="createNewGoogleAccount()">Create a new Google account</button>
 
-<form action="/login" method="post" id="userForm" style="display: none;">
-  <input type="hidden" id="userIdInput" name="user_id">
-  <input type="hidden" id="userNameInput" name="user_name" placeholder="User Name">
-  <input type="hidden" id="emailInput" name="user_email" placeholder="Email">
-  <button type="button" onclick="submitForm()">Submit</button>
-</form>
+<%= button_to "Sign Out", "/logout" %>
+
+<%# <button id="signOutBtn" onclick="signOut();" class="g-signout2">Sign out</button> %>
+
+<%= form_with(url: '/login', method: :post, id: 'userForm', style: 'display: none;') do |form| %>
+  <%# <%= form.hidden_field :user_name, id: 'userNameInput' %> 
+  <%= form.hidden_field :user_email, id: 'emailInput' %>
+  <%= button_tag 'Submit', type: 'button', onclick: 'submitForm()', style: 'display: none;' %>
+<% end %>
 
 <script>
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     // var imageUrl = profile.getImageUrl();
 
-    document.getElementById('userIdInput').value = profile.getId();
-    document.getElementById('userNameInput').value = profile.getName();
+    // document.getElementById('userNameInput').value = profile.getName();
     document.getElementById('emailInput').value = profile.getEmail();
     submitForm();
   }
 
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
+  // function signOut() {
+  //   var auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(function () {
+  //     console.log('User signed out.');
+  //   });
+  // }
 
   function submitForm() {
     var form = document.getElementById('userForm');
     form.submit();
+  }
+
+  function createNewGoogleAccount() {
+    window.open('https://accounts.google.com/signup', '_blank', 'width=600,height=600');
   }
 </script>
 </html>
