@@ -8,21 +8,9 @@
   <title>Public Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-  <!-- Include Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
 
-  <!-- Include Bootstrap JS and TomTom Maps SDK -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-    integrity="sha384-Y3UDbPn6TpSREZVeU2XsCMXvHznGfe1eVToKoWd40EvrKtkLoT/JOrme3Q+J5cpX"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N"
-    crossorigin="anonymous"></script>
+  <!-- Include TomTom Maps -->
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
 
   <style>
@@ -111,12 +99,12 @@
         </div>
         <!-- Marker Information Container -->
         <div id="markerInfoContainer">
-          <h4>Marker Information:</h4>
+          <h4>Marker Location:</h4>
           <p id="latitude">Latitude: </p>
           <p id="longitude">Longitude: </p>
         </div>
 
-        <!-- Bootstrap Button Styling -->
+        <!-- Button -->
         <div id="submitButtonContainer">
           <%= form_with(url: '/', method: 'post', id: 'locationForm') do |form| %>
             <%= form.hidden_field :latitude, id: 'latitudeField' %>
