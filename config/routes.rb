@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   get '/rounds/public', to: 'rounds#public_show'
   
-  # get '/users/new', to: 'users#new'
-  # post '/users', to: 'users#create'
-  # get '/login', to: 'users#login_form'
+  get '/users/new', to: 'users#new'
+  post '/users', to: 'users#create'
+  get '/login', to: 'users#login_form'
   post '/login', to: 'users#login'
-  # post '/logout', to: 'users#logout'
+  post '/logout', to: 'users#logout'
 
   get '/users/dashboard', to: 'users#show'
 
