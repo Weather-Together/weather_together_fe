@@ -1,11 +1,23 @@
 class UsersController < ApplicationController
   def show
+    @previous_rounds_info = get_previous_rounds
   end
 
   def login
     service = UsersService.new
-    id = service.get_url("/users/#{params[:user_email]}")
-    service.post_url("/users/#{id}")
+    id = service.send_login_info
+    session[:user_id] = id
+    redirect_to '/rounds/public'
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
+  def get_previous_rounds
+    service = UsersService.new
+    service.previous_rounds
   end
 
   # def new; end
@@ -31,11 +43,6 @@ class UsersController < ApplicationController
   # end
 
   # def login_form; end
-
-  # def logout
-  #   session[:user_id] = nil
-  #   redirect_to root_path
-  # end
 
   # private 
   
