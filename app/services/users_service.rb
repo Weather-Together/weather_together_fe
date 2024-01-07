@@ -4,8 +4,7 @@ class UsersService
   end
   
   def get_url(url)
-    response = conn.get(url)
-    JSON.parse(response.body, symbolize_names: true)
+    json_parse(conn.get(url))
   end
 
   def post_url(url, info)
