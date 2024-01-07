@@ -24,24 +24,51 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N"
     crossorigin="anonymous"></script>
   <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
-  
+
   <style>
     html,
     body {
       height: 100%;
-      overflow: hidden;
+      overflow-y: auto; /* Allow scrolling if content exceeds height */
     }
 
     #map {
-      height: 80vh;
+      min-height: 100vh;
+    }
+
+    #right-column {
+      background-color: #f8f9fa; /* Adjust background color as needed */
+      padding: 15px;
+      box-sizing: border-box;
+      height: 100vh;
     }
 
     #markerInfoContainer {
       padding: 15px;
+      margin-bottom: 15px; /* Add margin to separate from the submit button */
+      white-space: nowrap; /* Prevent text from wrapping */
     }
 
     #submitButtonContainer {
       padding: 15px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #gridBox {
+      width: 250px; /* WILL NEED TO ADJUST THIS */
+      height: 25px;
+      background-color: lightgray;
+      border: 1px solid gray;
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    #gridHeader {
+      font-weight: bold;
+      margin-bottom: 5px;
+      white-space: nowrap; /* Prevent 
+      text from wrapping */
     }
   </style>
 </head>
@@ -52,7 +79,36 @@
         <!-- TomTom Map Container -->
         <div id="map" class="map"></div>
       </div>
+      <div id="right-column" class="col-md-4">
+        <!-- Add the grid container here -->
       <div class="col-md-4">
+        <div id="gridContainer">
+          <!-- Add a text header and a grid box for each item -->
+          <div>
+            <div id="gridHeader">High Temperature</div>
+            <div id="gridBox"></div>
+          </div>
+          <div>
+            <div id="gridHeader">Low Temperature</div>
+            <div id="gridBox"></div>
+          </div>
+          <div>
+            <div id="gridHeader">Humidity</div>
+            <div id="gridBox"></div>
+          </div>
+          <div>
+            <div id="gridHeader">Wind Speed</div>
+            <div id="gridBox"></div>
+          </div>
+          <div>
+            <div id="gridHeader">Air Quality</div>
+            <div id="gridBox"></div>
+          </div>
+          <div>
+            <div id="gridHeader">Precipitation</div>
+            <div id="gridBox"></div>
+          </div>
+        </div>
         <!-- Marker Information Container -->
         <div id="markerInfoContainer">
           <h4>Marker Information:</h4>
