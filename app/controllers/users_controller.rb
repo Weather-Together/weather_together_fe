@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def previous_rounds_info
+    
+  end
+
   # def new; end
   
   # def create
