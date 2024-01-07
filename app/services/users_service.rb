@@ -20,4 +20,16 @@ class UsersService
   def send_login_info
     post_url("/users/#{params[:user_email]}")[:id]
   end
+
+  def previous_rounds
+    get_url("/users/#{session[:user_id]}/recent_rounds")
+  end
+
+  def send_vote(vote_info)
+    post_url("/users/#{session[:user_id]}/rounds/#{round_id}", vote_info)
+  end
+
+  def current_round
+    get_url("/users/#{session[:user_id]}/rounds/#{round_id}")
+  end
 end

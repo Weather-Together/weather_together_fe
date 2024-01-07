@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def get_previous_rounds
     service = UsersService.new
-    service.get_url("/users/#{session[:user_id]}/recent_rounds")
+    service.previous_rounds
   end
 
   # def new; end

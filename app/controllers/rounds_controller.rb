@@ -10,11 +10,11 @@ class RoundsController < ApplicationController
       latitude: params[:latitude],
       longitude: params[:longitude]
     }
-    service.post_url("/users/#{session[:user_id]}/rounds/#{service.round_id}", vote_info)
+    service.send_vote(vote_info)
   end
 
   def get_current_round
     service = UsersService.new
-    service.get_url("/users/#{session[:user_id]}/rounds/#{service.round_id}")
+    service.current_round
   end
 end
