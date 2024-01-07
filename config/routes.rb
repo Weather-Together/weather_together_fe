@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   post '/logout', to: 'users#logout'
 
-
   get '/users/dashboard', to: 'users#show'
 
   get '/rounds/votes/index', to: 'rounds/votes#index'
 
+  
 end
