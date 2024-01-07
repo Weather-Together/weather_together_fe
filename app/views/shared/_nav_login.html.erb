@@ -1,12 +1,13 @@
-<div class="nav-container container-fluid">
-  <nav class="navbar navbar-light bg-light">
-    <div class="logo">
-      <%= link_to "/" do %>
-        <%= image_tag "/images/logo.png", style: 'height: 30px; margin-right: 10px;' %>
-      <% end %>
-    </div>
-    <div class="navbar-links">
-      <%= link_to 'Logout', logout_path %>
-    </div>
+<div class='nav-container container-fluid'>
+  <nav class='navbar navbar-light bg-light'>
+    <%= link_to '/' do %>
+      <%= image_tag 'logo.png', style: 'height: 70px; margin-right: 10px; margin-left: 15px;', class: 'navbar-brand' %>
+    <% end %>
+
+    <ul class='navbar-nav ml-lg-auto d-flex flex-row'>
+      <li class='nav-item px-lg-2'>
+        <%= link_to 'Logout', logout_path, class: 'nav-link', style: 'padding-right: 15px;' %>
+      </li>
+    </ul>
   </nav>
 </div>
