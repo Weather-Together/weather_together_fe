@@ -7,9 +7,9 @@
 
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-<%= button_to "Sign Out", "/logout", method: :post %>
-
 <button onclick="createNewGoogleAccount()">Create a new Google account</button>
+
+<%= button_to "Sign Out", "/logout", method: :post %>
 
 <%# <button id="signOutBtn" onclick="signOut();" class="g-signout2">Sign out</button> %>
 
@@ -42,7 +42,7 @@
   }
 
   function createNewGoogleAccount() {
-    window.open('https://accounts.google.com/signup', '_blank');
+    window.open('https://accounts.google.com/signup', '_blank', 'width=600,height=600');
   }
 </script>
 </html>
