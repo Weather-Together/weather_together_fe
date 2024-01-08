@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    service = UsersService.new
-    id = service.send_login_info
+    # service = UsersService.new
+    # id = service.send_login_info
+    id = 1
     session[:user_id] = id
     redirect_to '/rounds/public'
   end

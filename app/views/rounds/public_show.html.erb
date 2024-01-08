@@ -127,11 +127,10 @@
         </div>
       </div>
     </div>
-  </div>
-
+  </div>\
 <script>
   var map = tt.map({
-    key: "S2oPYjoq5sNa8lSADIOzsvTlB8E25a4T",
+    key: "<%= Rails.application.credentials.tomtom[:key] %>",
     container: "map",
     dragRotate: false 
   });
