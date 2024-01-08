@@ -1,4 +1,4 @@
-class UsersService
+class UsersService < ApplicationService
   def conn
     conn = Faraday.new(url: 'http://localhost:3000/')
   end
@@ -29,6 +29,6 @@ class UsersService
   end
 
   def current_round
-    get_url("/users/#{session[:user_id]}/rounds/#{round_id}")
+    get_url("/users/#{session[:user_id]}/rounds/current_community_round")
   end
 end
