@@ -16,8 +16,8 @@ class UsersService < ApplicationService
   end
 
   # This will need to be changed to a get I think
-  def send_login_info
-    post_url("/users/#{params[:user_email]}")[:id]
+  def send_login_info(email)
+    post_url("/users/#{email}")[:id]
   end
 
   def previous_rounds

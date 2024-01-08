@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   get '/users/dashboard', to: 'users#show'
 
   get '/rounds/votes/index', to: 'rounds/votes#index'
+
+  get "/auth/google_oauth2/callback", to: "sessions#create"
+  delete '/sessions', to: 'sessions#destroy'
 end
