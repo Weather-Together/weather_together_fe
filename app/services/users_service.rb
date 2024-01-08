@@ -1,6 +1,6 @@
 class UsersService < ApplicationService
   def conn
-    conn = Faraday.new(url: 'http://localhost:3000/')
+    conn = Faraday.new(url: 'http://localhost:3000/api/v0/')
   end
   
   def get_url(url)
@@ -17,7 +17,7 @@ class UsersService < ApplicationService
 
   # This will need to be changed to a get I think
   def send_login_info(email)
-    post_url("/users/#{email}")[:id]
+    post_url("/users/#{email}", email)[:id]
   end
 
   def previous_rounds
