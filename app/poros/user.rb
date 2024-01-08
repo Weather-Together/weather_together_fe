@@ -1,8 +1,9 @@
 class User
-  attr_reader :name, :email
+  attr_reader :id, 
+              :email
 
   def initialize(details)
-    @name = details[:name]
+    @id = details[:id]
     @email = details[:email]
   end
 end

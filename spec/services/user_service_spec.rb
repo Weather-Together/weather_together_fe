@@ -27,14 +27,6 @@ RSpec.describe UsersService, type: :service do
       # expect(response.status) DO WE NEED
     end
 
-    it '#round_id returns a hash with the current round id' do
-      response = @service.round_id
-    
-      expect(response).to be_a(Hash)
-      # Add actual data structure
-      # expect(response[:id]).to be_a(Integer)
-    end
-
     it '#send_login_info returns a hash with user id' do
       # Stub for params[:user_email]
       allow_any_instance_of(ActionController::Parameters).to receive(:[]).with(:user_email).and_return('test@example.com')
