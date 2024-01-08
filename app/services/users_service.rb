@@ -11,10 +11,6 @@ class UsersService < ApplicationService
     response = conn.post(url, info, "Content-Type" => "application/json")
   end
 
-  def round_id
-    get_url("/rounds/current")[:id]
-  end
-
   # This will need to be changed to a get I think
   def send_login_info(email)
     post_url("/users/#{email}", email)[:id]
