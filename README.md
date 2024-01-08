@@ -93,15 +93,28 @@ UPDATE WITH ANY OR REMOVE
 
 ### Installation
 
-1. Get a free TomTom API Key at [https://developer.tomtom.com/](https://developer.tomtom.com/)
+1. Get a free TomTom API Key at [https://developer.tomtom.com/](https://developer.tomtom.com/knowledgebase/platform/articles/how-to-get-an-tomtom-api-key/) and a Google client ID and secret ID [here](https://console.cloud.google.com/getting-started?supportedpurview=project) and follow [these](https://www.balbooa.com/help/gridbox-documentation/integrations/other/google-client-id) instructions
+
 2. Clone the repo
    ```sh
    git clone https://github.com/Weather-Together/weather_together_fe.git
    ```
 3. Enter your API in `UPDATE ON WHERE LATER`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   ```sh
+   EDITOR="code --wait" rails credentials:edit
    ```
+  In editor pop up
+  ```ruby
+  weather_api:
+    key: <YOUR API KEY>
+
+  tomtom:
+    key: <YOUR API KEY>
+
+google:
+    client_id: <YOUR CLIENT ID>
+    secret_id: <YOUR SECRET ID>
+  ```
 4. Gem Bundle
    ```sh
     bundle
