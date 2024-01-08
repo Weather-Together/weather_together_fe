@@ -1,20 +1,26 @@
-<%= render partial: "shared/nav" %>
+<%= render partial: 'shared/nav' %>
 
-<style>  
-  #how_to {
-    position: fixed;
-    width: 92%;
-    height: 83%;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 5%;
-    border-style: solid;
-    border-width: medium;
-  }
-</style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>  
+      #how_to {
+        position: fixed;
+        width: 92%;
+        height: 83%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5%;
+        border-style: solid;
+        border-width: medium;
+        color: #455a64; /* Currently same as navbar */
+      }
+    </style>
+  </head>
 
-<%# <div><%= button_to 'Login', '/login', method: :get</div> %>
-
-<%# <div><%= button_to 'Create Account', '/users/new', method: :get</div>  %>
-
-<p id='
+  <body>
+    <div class='container'>
+      <img id='how_to' src='assets/how_to.png' class='mx-auto d-block img-fluid' />
+    </div>
+  </body>
+</html>

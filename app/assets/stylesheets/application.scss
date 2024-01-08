@@ -15,22 +15,14 @@
  */
  @import "bootstrap";
 
+body {
+  background-color: #78909c;
+}
+
+.navbar-nav .nav-item a.nav-link:hover {
+  color: #3e77b2;
+}
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items vertically at the center */
-}
-
-.navbar-links {
-  display: flex; /* Make the list items flex containers */
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links a {
-  margin-left: 10px; /* Adjust the spacing between links as needed */
-}
-
-.navbar-links a:last-child {
-  margin-right: 10px; /* Adjust the spacing for the rightmost link */
+  background-color: #455a64;
 }
