@@ -15,7 +15,7 @@
 <body>
   <div class="container-fluid d-flex justify-content-center align-items-center vh-100 text-center">
     <div>
-      <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com">
+      <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
       <script src="https://apis.google.com/js/platform.js" async defer></script>
 
       <%# <div class="g-signin2" data-onsuccess="onSignIn"></div> %>
@@ -30,15 +30,15 @@
 
   var auth2;
 
-  function initGoogleSignIn() {
-    gapi.load('auth2', function() {
-      auth2 = gapi.auth2.init({
-        client_id: 'Y173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        scope: 'email profile',
-      });
-    });
-  }
+  // function initGoogleSignIn() {
+  //   gapi.load('auth2', function() {
+  //     auth2 = gapi.auth2.init({
+  //       client_id: 'Y173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com',
+  //       cookiepolicy: 'single_host_origin',
+  //       scope: 'email profile',
+  //     });
+  //   });
+  // }
 
     // function onSignIn(googleUser) {
     //   var profile = googleUser.getBasicProfile();
@@ -54,10 +54,6 @@
     function createNewGoogleAccount() {
       window.open('https://accounts.google.com/signup', '_blank', 'width=600,height=600');
     }
-
-      document.addEventListener('DOMContentLoaded', function () {
-    initGoogleSignIn();
-  });
   </script>
 </body>
 </html>
