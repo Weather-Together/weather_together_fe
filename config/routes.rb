@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post '/community_round/submit', to: 'rounds#submit_vote'
   
   get '/users/new', to: 'users#new'
-  # post '/users', to: 'users#create'
   get '/login', to: 'users#login_form'
   # post '/login', to: 'users#login'
   # post '/logout', to: 'users#logout'

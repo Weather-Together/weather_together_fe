@@ -1,13 +1,24 @@
-<%= render partial: 'shared/nav' %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <%= render partial: 'shared/nav' %>
+
   <script src="https://apis.google.com/js/platform.js?onload=initGoogleSignIn" async defer></script>
 
   <style>
     body {
       overflow: hidden;
+    }
+
+    /* Style anchor tags to look like buttons */
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff; /* Change to your desired button color */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 5px;
     }
   </style>
 </head>
@@ -18,42 +29,14 @@
       <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
       <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-      <%# <div class="g-signin2" data-onsuccess="onSignIn"></div> %>
-      <%= link_to 'Google Login', '/auth/google_oauth2' %>
+      <div>
+        <%= link_to 'Google Login', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
+      </div>
 
-        <button onclick="createNewGoogleAccount()" class="btn btn-primary mt-3">Create a new Google account</button>
-
+      <div>
+        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3' %>
+      </div>
     </div>
   </div>
-
-  <script>
-
-  var auth2;
-
-  // function initGoogleSignIn() {
-  //   gapi.load('auth2', function() {
-  //     auth2 = gapi.auth2.init({
-  //       client_id: 'Y173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com',
-  //       cookiepolicy: 'single_host_origin',
-  //       scope: 'email profile',
-  //     });
-  //   });
-  // }
-
-    // function onSignIn(googleUser) {
-    //   var profile = googleUser.getBasicProfile();
-    //   document.getElementById('emailInput').value = profile.getEmail();
-    //   submitForm();
-    // }
-
-    // function submitForm() {
-    //   var form = document.getElementById('userForm');
-    //   form.submit();
-    // }
-
-    function createNewGoogleAccount() {
-      window.open('https://accounts.google.com/signup', '_blank', 'width=600,height=600');
-    }
-  </script>
 </body>
 </html>
