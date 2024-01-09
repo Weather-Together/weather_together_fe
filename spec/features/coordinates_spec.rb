@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Coordinates', :vcr do
   xscenario 'clicking on the map sends data to the server' do
-    visit '/rounds/public' 
+    visit '/community_round' 
 
     # Assuming there is a map with an id 'map'
     page.execute_script("map.simulateClick({ lngLat: [-74.0060, 40.7128] })")

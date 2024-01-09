@@ -119,7 +119,7 @@
 
         <!-- Button -->
         <div id="submitButtonContainer">
-          <%= form_with(url: '/rounds/public/submit', method: :post, id: 'locationForm') do |form| %>
+          <%= form_with(url: '/community_round/submit', method: :post, id: 'locationForm') do |form| %>
             <%= form.hidden_field :latitude, id: 'latitudeField' %>
             <%= form.hidden_field :longitude, id: 'longitudeField' %>
             <%= form.submit 'Submit', class: 'btn btn-primary submit-button' %>

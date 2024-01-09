@@ -1,6 +1,6 @@
 class UsersService < ApplicationService
   def conn
-    conn = Faraday.new(url: 'http://localhost:3000/api/v0/')
+    conn = Faraday.new(url: 'https://weather-together-be.onrender.com/api/v0/')
   end
   
   def get_url(url)
