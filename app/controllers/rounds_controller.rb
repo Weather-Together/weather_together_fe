@@ -1,4 +1,6 @@
 class RoundsController < ApplicationController
+  # before_action :require_login, only: [:public_show, :submit_vote]
+
   def public_show
     service = UsersService.new
     response = service.current_round
@@ -16,4 +18,14 @@ class RoundsController < ApplicationController
     }
     service.send_vote(vote_info)
   end
+
+
+  # private
+
+  # def require_login
+  #   unless session[:user_id]
+  #     flash[:error] = 'You must be logged in to access this page.'
+  #     redirect_to login_path
+  #   end
+  # end
 end
