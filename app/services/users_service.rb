@@ -1,4 +1,4 @@
-class UsersService < ApplicationService
+class UsersService < ApplicationService #DEPRECIATE LATER
   def conn
     conn = Faraday.new(url: 'http://localhost:3000/api/v0/')
   end
