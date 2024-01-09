@@ -10,19 +10,18 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/rounds/public', to: 'rounds#public_show'
-  post '/rounds/public/submit', to: 'rounds#submit_vote'
+  get '/community_round', to: 'rounds#public_show'
+  post '/community_round/submit', to: 'rounds#submit_vote'
   
   get '/users/new', to: 'users#new'
-  post '/users', to: 'users#create'
   get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login'
-  post '/logout', to: 'users#logout'
+  # post '/login', to: 'users#login'
+  # post '/logout', to: 'users#logout'
 
   get '/users/dashboard', to: 'users#show'
 
-  get '/rounds/votes/index', to: 'rounds/votes#index'
+  # get '/rounds/votes/index', to: 'rounds/votes#index'
 
-  get "/auth/google_oauth2/callback", to: "sessions#create"
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy'
 end

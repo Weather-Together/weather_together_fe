@@ -5,6 +5,11 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Build Status](https://img.shields.io/github/workflow/status/Weather-Together/weather_together_be/main/main)](https://github.com/Weather-Together/weather_together_be/actions)
+
+[![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)](https://example.com/coverage-report)
+
+
 
 
 
@@ -79,6 +84,16 @@
 
 * [![saasc-rails][gem-saasc-rails]][gem-saasc-rails-url]
 * [![faraday-rails][gem-faraday-rails]][gem-faraday-rails-url]
+* [![omniauth-google-oauth2][gem-omniauth-google-oauth2]][gem-omniauth-google-oauth2-url]
+* [![rspec-rails][gem-rspec-rails]][gem-rspec-rails-url]
+* [![capybara][gem-capybara]][gem-capybara-url]
+* [![simplecov][gem-simplecov]][gem-simplecov-url]
+* [![webmock][gem-webmock]][gem-webmock-url]
+* [![vcr][gem-vcr]][gem-vcr-url]
+* [![factory_bot_rails][gem-factory_bot_rails]][gem-factory_bot_rails-url]
+* [![faker][gem-faker]][gem-faker-url]
+* [![pry][gem-pry]][gem-pry-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,7 +231,27 @@ Project Link: [https://github.com/Weather-Together/weather_together_fe](https://
 [product-screenshot]: images/screenshot.png
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[gem-saasc-rails]: https://img.shields.io/badge/sassc--rails?style=flat-square&label=saasc-rails
+[gem-saasc-rails]: https://img.shields.io/badge/sassc--rails-2.4.0-blue?style=flat-square&label=saasc-rails
 [gem-saasc-rails-url]: https://github.com/sass/sassc-rails
-[gem-faraday-rails]: https://img.shields.io/badge/faraday--rails?style=flat-square
+[gem-faraday-rails]: https://img.shields.io/badge/faraday--rails-2.8.1-yellowgreen?style=flat-square
 [gem-faraday-rails-url]: https://lostisland.github.io/faraday/#/
+[gem-bootsnap]: https://img.shields.io/badge/bootsnap-1.17.0-critical?style=flat-square
+[gem-bootsnap-url]: https://github.com/Shopify/bootsnap
+[gem-omniauth-google-oauth2]: https://img.shields.io/badge/omniauth--google--oauth2-2.1.2-orange?style=flat-square
+[gem-omniauth-google-oauth2-url]: https://github.com/zquestz/omniauth-google-oauth2
+[gem-rspec-rails]: https://img.shields.io/badge/rspec--rails-5.0.0-green?style=flat-square
+[gem-rspec-rails-url]: https://github.com/rspec/rspec-rails
+[gem-capybara]: https://img.shields.io/badge/capybara-3.39.2-brightgreen?style=flat-square
+[gem-capybara-url]: https://github.com/teamcapybara/capybara
+[gem-simplecov]: https://img.shields.io/badge/simplecov-0.22.2-yellow?style=flat-square
+[gem-simplecov-url]: https://github.com/simplecov-ruby/simplecov
+[gem-webmock]: https://img.shields.io/badge/webmock-3.19.1-yellowgreen?style=flat-square
+[gem-webmock-url]: https://github.com/bblimke/webmock
+[gem-vcr]: https://img.shields.io/badge/vcr-6.2.0-orange?style=flat-square
+[gem-vcr-url]: https://github.com/vcr/vcr
+[gem-factory_bot_rails]: https://img.shields.io/badge/factory_bot_rails-6.4.5-success?style=flat-square
+[gem-factory_bot_rails-url]: https://github.com/thoughtbot/factory_bot_rails
+[gem-faker]: https://img.shields.io/badge/faker-3.2.2-red?style=flat-square
+[gem-faker-url]: https://github.com/faker-ruby/faker
+[gem-pry]: https://img.shields.io/badge/pry-0.14.2-yellow?style=flat-square
+[gem-pry-url]: https://github.com/pry/pry
