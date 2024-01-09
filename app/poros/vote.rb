@@ -1,6 +1,13 @@
 class Vote
   attr_reader :id, 
-              :email
+              :user_id,
+              :round_id,
+              :status,
+              :target_weather_stats,
+              :lat,
+              :lon,
+              :weather_stats,
+              :score
 
   def initialize(details)
     @id = details[:vote_id]
