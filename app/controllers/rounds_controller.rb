@@ -2,11 +2,7 @@ class RoundsController < ApplicationController
   # before_action :require_login, only: [:public_show]
 
   def public_show
-    service = UsersService.new
-    response = service.current_round
-    current_round_info = Round.new(response[:data][:attributes])
-    current_round_info = JSON.parse(current_round_info.body, symbolize_names: true)
-    @target_weather_data = current_round_info.target_weather_stats[:weather_data]
+    @target_weather_data = RoundFacade.new.target_weather_data
   end
 
   # Refactor this to make less API calls (store round in session?)
