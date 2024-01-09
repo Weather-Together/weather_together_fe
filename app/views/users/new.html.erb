@@ -1,13 +1,42 @@
-<%= render partial: "shared/nav" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render partial: 'shared/nav' %>
 
-<%= form_with url: '/users', local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, required: true %><br>
-  <%= form.label :email %>
-  <%= form.text_field :email, required: true %><br>
-  <%= form.label :password %>
-  <%= form.password_field :password, required: true %><br>
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation, required: true %><br>
-  <%= form.submit "Submit" %>
-<% end %>
+  <script src="https://apis.google.com/js/platform.js?onload=initGoogleSignIn" async defer></script>
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    /* Style anchor tags to look like buttons */
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff; /* Change to your desired button color */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid d-flex justify-content-center align-items-center vh-100 text-center">
+    <div>
+      <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+      <div>
+        <%= link_to 'Google Login', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
+      </div>
+
+      <div>
+        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3' %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

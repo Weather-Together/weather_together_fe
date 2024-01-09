@@ -10,7 +10,7 @@ RSpec.describe "User Registration" do
     fill_in :user_password_confirmation, with:'password123'
     click_button 'Create New User'
 
-    expect(current_path).to eq('/rounds/public')
+    expect(current_path).to eq('/community_round')
     # expect(page).to have_content("user one's Dashboard")
   end 
 

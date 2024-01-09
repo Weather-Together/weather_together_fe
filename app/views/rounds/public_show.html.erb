@@ -1,8 +1,7 @@
-<%= render partial: 'shared/nav' %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <%= render partial: 'shared/nav' %>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
   <meta charset="UTF-8" />
   <title>Public Game</title>
@@ -119,7 +118,7 @@
 
         <!-- Button -->
         <div id="submitButtonContainer">
-          <%= form_with(url: '/rounds/public/submit', method: :post, id: 'locationForm') do |form| %>
+          <%= form_with(url: '/community_round/submit', method: :post, id: 'locationForm') do |form| %>
             <%= form.hidden_field :latitude, id: 'latitudeField' %>
             <%= form.hidden_field :longitude, id: 'longitudeField' %>
             <%= form.submit 'Submit', class: 'btn btn-primary submit-button' %>
