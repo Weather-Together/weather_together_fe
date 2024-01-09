@@ -1,5 +1,5 @@
 class RoundsController < ApplicationController
-  # before_action :require_login, only: [:public_show, :submit_vote]
+  # before_action :require_login, only: [:public_show]
 
   def public_show
     service = UsersService.new
