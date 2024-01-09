@@ -87,27 +87,27 @@
           <!-- Add a text header and a grid box for each item -->
           <div>
             <div id="gridHeader">High Temperature</div>
-            <div id="gridBox"></div>
+            <div id="gridBox"><%= @target_weather_data[:maxtemp_f] %></div>
           </div>
           <div>
             <div id="gridHeader">Low Temperature</div>
-            <div id="gridBox"></div>
+            <div id="gridBox"><%= @target_weather_data[:mintemp_f] %></div>
           </div>
           <div>
-            <div id="gridHeader">Humidity</div>
-            <div id="gridBox"></div>
+            <div id="gridHeader">Average Humidity</div>
+            <div id="gridBox"><%= @target_weather_data[:avghumidity] %></div>
           </div>
           <div>
-            <div id="gridHeader">Wind Speed</div>
-            <div id="gridBox"></div>
+            <div id="gridHeader">Max Wind Speed</div>
+            <div id="gridBox"><%= @target_weather_data[:maxwind_mph] %></div>
           </div>
-          <div>
+          <%# <div>
             <div id="gridHeader">Air Quality</div>
-            <div id="gridBox"></div>
-          </div>
+            <%# <div id="gridBox"><%= @target_weather_data </div> %>
+          <%# </div> %>
           <div>
-            <div id="gridHeader">Precipitation</div>
-            <div id="gridBox"></div>
+            <div id="gridHeader">Precipitation (inches)</div>
+            <div id="gridBox"><%= @target_weather_data[:totalprecip_in] %></div>
           </div>
         </div>
         <!-- Marker Information Container -->
