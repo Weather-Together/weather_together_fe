@@ -15,4 +15,8 @@ class RoundsFacade
       Round.new(previous_round)
     end
   end
+
+  def user_dashboard
+    
+  end
 end
