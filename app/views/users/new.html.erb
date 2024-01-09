@@ -1,13 +1,59 @@
-<%= render partial: "shared/nav" %>
+<%= render partial: 'shared/nav' %>
 
-<%= form_with url: '/users', local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, required: true %><br>
-  <%= form.label :email %>
-  <%= form.text_field :email, required: true %><br>
-  <%= form.label :password %>
-  <%= form.password_field :password, required: true %><br>
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation, required: true %><br>
-  <%= form.submit "Submit" %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://apis.google.com/js/platform.js?onload=initGoogleSignIn" async defer></script>
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid d-flex justify-content-center align-items-center vh-100 text-center">
+    <div>
+      <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+      <%# <div class="g-signin2" data-onsuccess="onSignIn"></div> %>
+      <%= link_to 'Google Login', '/auth/google_oauth2' %>
+
+        <button onclick="createNewGoogleAccount()" class="btn btn-primary mt-3">Create a new Google account</button>
+
+    </div>
+  </div>
+
+  <script>
+
+  var auth2;
+
+  // function initGoogleSignIn() {
+  //   gapi.load('auth2', function() {
+  //     auth2 = gapi.auth2.init({
+  //       client_id: 'Y173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com',
+  //       cookiepolicy: 'single_host_origin',
+  //       scope: 'email profile',
+  //     });
+  //   });
+  // }
+
+    // function onSignIn(googleUser) {
+    //   var profile = googleUser.getBasicProfile();
+    //   document.getElementById('emailInput').value = profile.getEmail();
+    //   submitForm();
+    // }
+
+    // function submitForm() {
+    //   var form = document.getElementById('userForm');
+    //   form.submit();
+    // }
+
+    function createNewGoogleAccount() {
+      window.open('https://accounts.google.com/signup', '_blank', 'width=600,height=600');
+    }
+  </script>
+</body>
+</html>

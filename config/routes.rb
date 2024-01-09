@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/community_round', to: 'rounds#public_show'
   post '/community_round/submit', to: 'rounds#submit_vote'
   
-  # get '/users/new', to: 'users#new'
+  get '/users/new', to: 'users#new'
   # post '/users', to: 'users#create'
   get '/login', to: 'users#login_form'
   # post '/login', to: 'users#login'
