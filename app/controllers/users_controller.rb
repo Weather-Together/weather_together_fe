@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    # service = UsersService.new
-    # @previous_rounds_info = service.previous_rounds
+    service = UsersService.new
+    @previous_rounds_info = service.previous_rounds
   end
 
   def login
