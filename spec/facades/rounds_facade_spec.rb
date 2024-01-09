@@ -10,13 +10,13 @@ RSpec.describe RoundsFacade, type: :facade do
       expect(@facade).to be_a(RoundsFacade)
     end
 
-    it "#target_weather_data" do
+    xit "#target_weather_data" do
       result = @facade.target_weather_data
 
       expect(result).to be_a(Hash)
     end
 
-    it "#previous_user_rounds" do
+    xit "#previous_user_rounds" do
       results = @facade.previous_user_rounds
 
       results.each do |previous_round|

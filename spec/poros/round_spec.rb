@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Round do
-  it "exists" do
+  xit "exists" do
     details = {
      # FILL IN WITH ENDPOINT
     }

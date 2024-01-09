@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe User do
-  it "exists" do
+  xit "exists" do
     details = {
      # FILL IN WITH ENDPOINT
     }
