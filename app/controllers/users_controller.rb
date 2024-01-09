@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     # service = UsersService.new
-    # @previous_rounds_info = service.previous_rounds
+    # @previous_rounds_info = RoundsFacade.new.previous_user_rounds
   end
 
   # private

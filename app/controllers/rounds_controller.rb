@@ -2,7 +2,7 @@ class RoundsController < ApplicationController
   # before_action :require_login, only: [:public_show]
 
   def public_show
-    @target_weather_data = RoundFacade.new.target_weather_data
+    @target_weather_data = RoundsFacade.new.target_weather_data
   end
 
   # Refactor this to make less API calls (store round in session?)
