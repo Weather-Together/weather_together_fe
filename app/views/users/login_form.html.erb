@@ -10,11 +10,10 @@
       overflow: hidden;
     }
 
-    /* Style anchor tags to look like buttons */
-    a {
+    #google_signup {
       display: inline-block;
       padding: 10px 20px;
-      background-color: #007bff; /* Change to your desired button color */
+      background-color: #007bff;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
@@ -34,7 +33,7 @@
       </div>
 
       <div>
-        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3' %>
+        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3', id: 'google_signup' %>
       </div>
     </div>
   </div>
