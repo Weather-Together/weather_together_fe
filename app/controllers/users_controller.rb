@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   # before_action :require_login, only: [:show]
 
   def show
-    # service = UsersService.new
-    # @previous_rounds_info = service.previous_rounds
+    facade = RoundFacade.new
+    @previous_rounds = facade.previous_rounds
+    # @current_round = facade.current_round
   end
 
   # private

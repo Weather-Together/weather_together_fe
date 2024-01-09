@@ -39,7 +39,11 @@
         <div class="flex-fill">
           <h2>Personal Stats</h2>
           <p>
-            
+            <% @previous_rounds.each do |round| %>
+              <%= round.close_date %><br>
+              <%= round.target_weather_stats %><br>
+              <%= round.status %><br>
+            <% end %>
           </p>
         </div>
       </div>
