@@ -1,0 +1,3 @@
+class SendingService < ApplicationService
+  
+end

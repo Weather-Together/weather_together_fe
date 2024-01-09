@@ -1,0 +1,3 @@
+class ReceivingService < ApplicationService
+  
+end
