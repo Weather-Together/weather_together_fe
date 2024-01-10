@@ -1,5 +1,6 @@
 class WeatherTogetherService
   def conn
+    # conn = Faraday.new(url: 'localhost:3000/api/v0/')
     conn = Faraday.new(url: 'https://weather-together-be.onrender.com/api/v0/')
   end
 
