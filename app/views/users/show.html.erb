@@ -30,7 +30,11 @@
         <div class="flex-fill">
           <h2>Today's Game</h2>
           <p>
-            
+            <% @current_round.votes.each_with_index do |vote, index| %>
+              <p>Vote #<%= index + 1 %></p>
+              <p>Latitude: <%= vote.lat %></p>
+              <p>Longitude: <%= vote.lon %></p>
+            <% end %>
           </p>
         </div>
       </div>
@@ -40,9 +44,9 @@
           <h2>Personal Stats</h2>
           <p>
             <% @previous_rounds.each do |round| %>
-              <%= round.close_date %><br>
-              <%= round.target_weather_stats %><br>
-              <%= round.status %><br>
+              <p><%=  %></p>
+              <p><%=  %></p>
+              <p><%=  %></p>
             <% end %>
           </p>
         </div>
