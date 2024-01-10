@@ -9,10 +9,10 @@ class RoundsFacade
 
   def previous_user_rounds
     service = ReceivingService.new
-    response = service.previous_rounds[:data][:attributes]
+    response = service.previous_rounds[:data]
 
-    response.map do |previous_round|
-      Round.new(previous_round, vote_data(previous_round[:votes]))
+    response.each do |previous_round|
+      Round.new(previous_round[:attributes], vote_data(previous_round[:attributes][:votes]))
     end
   end
 
