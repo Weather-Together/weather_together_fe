@@ -30,10 +30,6 @@ class RoundsFacade
     Round.new(response, vote_data(votes))
   end
 
-  def vote_data(data)
-    data.map do |vote|
-      Vote.new(vote)
-    end
   def current_round_data
     service = ReceivingService.new
     response = service.current_round[:data][:attributes]
@@ -47,4 +43,3 @@ class RoundsFacade
     end
   end
 end
-
