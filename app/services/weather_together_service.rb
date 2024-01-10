@@ -8,7 +8,8 @@ class WeatherTogetherService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def post_response(url, info)
-    response = conn.post(url, info, "Content-Type" => "application/json")
-  end
+  # OUTDATED
+  # def post_response(url, info)
+  #   response = conn.post(url, info, "Content-Type" => "application/json")
+  # end
 end
