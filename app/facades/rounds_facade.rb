@@ -4,14 +4,14 @@ class RoundsFacade
     response = service.current_round[:data][:attributes]
     votes = response[:votes]
     current_round = Round.new(response, vote_data(votes))
-    eval(current_round.target_weather_stats)[:weather_data]
+    eval(current_round.target_weather_stats)[:weather_data] # Unstringifies nested json
   end
 
   def previous_user_rounds(user_id)
     service = ReceivingService.new
     response = service.previous_rounds[:data] # Array of last three rounds
 
-    last_three_rounds = response.each_with_object([]) do |round, last_three_rounds|   # Probably could use map
+    last_three_rounds = response.each_with_object([]) do |round, last_three_rounds| # Probably could use map
       details =  {
         round_id: round[:id],
         close_date: round[:attributes][:close_date],
@@ -20,8 +20,8 @@ class RoundsFacade
       }
 
       vote = round[:attributes][:votes].select { |vote| vote[:user_id] == user_id }
-
-      round = { details: details, vote: vote_data }
+require 'pry'; binding.pry
+      round = { details: details, vote: vote }
       last_three_rounds << round
     end
 
