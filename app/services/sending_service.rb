@@ -1,6 +1,6 @@
 class SendingService < WeatherTogetherService 
   def send_login_info(email)
-    post_response("/users/#{email}", email)[:id]
+    post_response("/users/oauth_login", email)[:id]
   end
   
   def send_vote(vote_info)
