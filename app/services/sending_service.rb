@@ -1,6 +1,7 @@
 class SendingService < WeatherTogetherService 
   def send_login_info(email)
-    post_response("/users/oauth_login", email)[:id]
+    email = { email: email }.to_json
+    conn.post('users/oauth_login', email, "Content-Type" => "application/json")
   end
   
   def send_vote(vote_info)
