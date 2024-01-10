@@ -16,7 +16,9 @@ class RoundsFacade
     end
   end
 
-  def user_dashboard
-    
+  def current_round_data
+    service = ReceivingService.new
+    response = service.current_round
+    Round.new(response)
   end
 end
