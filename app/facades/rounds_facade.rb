@@ -7,12 +7,26 @@ class RoundsFacade
     eval(current_round.target_weather_stats)[:weather_data]
   end
 
-  def previous_user_rounds
+  def previous_user_rounds(user_id)
     service = ReceivingService.new
-    response = service.previous_rounds[:data]
+    response = service.previous_rounds[:data] # Array of last three rounds
 
-    response.each do |previous_round|
-      Round.new(previous_round[:attributes], vote_data(previous_round[:attributes][:votes]))
+    last_three_rounds = response.each_with_object([]) do |round, last_three_rounds|   # Probably could use map
+      details =  {
+        round_id: round[:id],
+        close_date: round[:attributes][:close_date],
+        target_weather_stats: round[:attributes][:target_weather_stats],
+        status: round[:attributes][:status]
+      }
+
+      vote = round[:attributes][:votes].select { |vote| vote[:user_id] == user_id }
+
+      round = { details: details, vote: vote_data }
+      last_three_rounds << round
+    end
+
+    last_three_rounds.map do |round|
+      Round.new(round[:details], vote_data(round[:vote]))
     end
   end
 
