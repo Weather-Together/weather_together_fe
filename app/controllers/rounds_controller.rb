@@ -6,9 +6,8 @@ class RoundsController < ApplicationController
     @target_weather_data = facade.target_weather_data
   end
 
-  # Refactor this to make less API calls (store round in session?)
   def submit_vote
-    service = UsersService.new
+    service = SendingService.new
     vote_info = {
       latitude: params[:latitude],
       longitude: params[:longitude]

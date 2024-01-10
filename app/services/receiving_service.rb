@@ -1,6 +1,6 @@
 class ReceivingService < WeatherTogetherService 
   def previous_rounds
-    get_response("users/4/recent_rounds")
+    get_response("users/#{session[:user_id]}/recent_rounds")
   end
 
   def current_round
