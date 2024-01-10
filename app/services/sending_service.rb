@@ -4,6 +4,6 @@ class SendingService < WeatherTogetherService
   end
   
   def send_vote(vote_info)
-    post_response("/users/31/rounds/#{round_id}", vote_info)
+    post_response("/users/#{session[:user_id]}/rounds/#{round_id}", vote_info)
   end
 end
