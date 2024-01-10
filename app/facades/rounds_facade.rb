@@ -4,8 +4,7 @@ class RoundsFacade
     response = service.current_round[:data][:attributes]
     votes = response[:votes]
     current_round = Round.new(response, vote_data(votes))
-
-    JSON.parse(current_round[:target_weather_stats], symbolize_names: true)[:weather_data]
+    eval(current_round.target_weather_stats)[:weather_data]
   end
 
   def previous_user_rounds

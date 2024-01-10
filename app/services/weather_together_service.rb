@@ -3,9 +3,10 @@ class WeatherTogetherService
     # conn = Faraday.new(url: ' https://weather-together-be.onrender.com/api/v0/')
     conn = Faraday.new(url: 'http://localhost:3000/api/v0/')
   end
-
-  def get_response(url)  
-    JSON.parse(conn.get(url), symbolize_names: true)
+  
+  def get_response(url)
+    response = conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def post_response(url, info)
