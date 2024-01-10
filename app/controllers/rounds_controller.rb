@@ -7,12 +7,14 @@ class RoundsController < ApplicationController
   end
 
   def submit_vote
-    service = SendingService.new
+    round_id = ReceivingService.new.current_round[:data][:id]
+    
     vote_info = {
       latitude: params[:latitude],
       longitude: params[:longitude]
     }
-    service.send_vote(vote_info)
+
+    SendingService.new.send_vote(round_id, vote_info)
   end
 
 
