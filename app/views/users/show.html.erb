@@ -33,7 +33,7 @@
             <% @current_round.votes.each_with_index do |vote, index| %>
               <p>Vote #<%= index + 1 %></p>
               <p>Latitude: <%= vote.lat %></p>
-              <p>Longitude: <%= vote.lon %></p>
+              <p>Longitude: <%= vote.lon %></p><br>
             <% end %>
           </p>
         </div>
@@ -44,9 +44,18 @@
           <h2>Personal Stats</h2>
           <p>
             <% @previous_rounds.each do |round| %>
-              <p><%=  %></p>
-              <p><%=  %></p>
-              <p><%=  %></p>
+              <p>
+                <p>Close Date: <%= round.close_date %></p>
+                <p>Round Type: <%= round.status %></p>
+                <% round.votes.each do |vote| %>
+                  <p>Round Status: <%= vote.status %></p>
+                  <p>Latitude Guessed: <%= vote.lat %></p>
+                  <p>Longitude Guessed: <%= vote.lon %></p>
+                  <% if vote.score.present? %>
+                    <p>Score: <%= vote.score %></p>
+                  <% end %>
+                <% end %>
+              </p><br>
             <% end %>
           </p>
         </div>
