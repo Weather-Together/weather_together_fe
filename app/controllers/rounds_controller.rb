@@ -10,13 +10,13 @@ class RoundsController < ApplicationController
     round_id = ReceivingService.new.current_round[:data][:id]
 
     vote_info = {
-      latitude: params[:latitude],
-      longitude: params[:longitude]
+      lat: params[:latitude],
+      lon: params[:longitude]
     }
 
     SendingService.new.send_vote(round_id, vote_info)
 
-    flash[:success] = 'Successfully submitted!'
+    flash[:success] = 'Successfully submitted, you can vote again until the end of the day!'
     redirect_to users_dashboard_path  # TEMP FOR NOW
   end
 
