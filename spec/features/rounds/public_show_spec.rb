@@ -33,18 +33,18 @@ RSpec.describe 'Public Show Page', type: :feature, js: true do
     expect(page).to have_button('Submit')
   end
 
-  xit 'places a marker and submits the form' do
-    Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app, browser: :chrome)
-    end
-    Capybara.javascript_driver = :selenium
+  # xit 'places a marker and submits the form' do
+  #   Capybara.register_driver :selenium do |app|
+  #     Capybara::Selenium::Driver.new(app, browser: :chrome)
+  #   end
+  #   Capybara.javascript_driver = :selenium
 
-    page.execute_script('map.fire("click", { lngLat: [-73.935242, 40.730610] })')
+  #   page.execute_script('map.fire("click", { lngLat: [-73.935242, 40.730610] })')
 
-    expect(page).to have_content('-73.935242')
-    expect(page).to have_content('40.730610')
+  #   expect(page).to have_content('-73.935242')
+  #   expect(page).to have_content('40.730610')
 
-    click_button 'Submit'
-    expect(page).to have_content('Successfully submitted')
-  end
+  #   click_button 'Submit'
+  #   expect(page).to have_content('Successfully submitted')
+  # end
 end
