@@ -18,4 +18,13 @@ class SendingService < WeatherTogetherService
 
     conn.post('users', user_info, "Content-Type" => "application/json")
   end
+
+  def login_user(email, password)
+    user_info = {
+      email: email,
+      password: password
+    }.to_json
+
+    conn.post('users/login', user_info, "Content-Type" => "application/json")
+  end
 end

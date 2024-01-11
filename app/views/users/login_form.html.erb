@@ -28,7 +28,7 @@
       <div class="col-md-6">
         <h2 class="text-center">Login</h2>
 
-        <%= form_with url: '/register', local: true, html: { class: 'form' } do |form| %>
+        <%= form_with url: '/login', local: true, html: { class: 'form' } do |form| %>
 
           <div class="mb-3">
             <%= form.label :email, class: 'form-label' %>
@@ -41,7 +41,7 @@
           </div>
 
           <div class="mb-3 text-center">
-            <%= form.submit "Create New User", class: 'btn btn-primary btn-block' %>
+            <%= form.submit "Login", class: 'btn btn-primary btn-block' %>
           </div>
         <% end %>
       </div>

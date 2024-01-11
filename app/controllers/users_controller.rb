@@ -27,6 +27,18 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def login
+    service = SendingService.new
+    id = service.login_user(params[:email], params[:password]) # dig for id if needed
+    if #success
+      session[:user_id] = id
+      redirect_to '/community_round'
+    else
+      flash[:error] = 'Invalid login, please try again'
+      redirect_back
+    end
+  end
+
   # private
 
   # def require_login
