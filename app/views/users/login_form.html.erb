@@ -9,16 +9,6 @@
     body {
       overflow: hidden;
     }
-
-    #google_signup {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 5px;
-    }
   </style>
 </head>
 
@@ -48,15 +38,9 @@
     </div>
 
     <!-- Move the Google buttons below the login form -->
-    <div class="row justify-content-center mt-3">
-      <div class="col-md-6 text-center">
-        <div>
-          <%= link_to 'Login with Google', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
-        </div>
-
-        <div>
-          <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3', id: 'google_signup' %>
-        </div>
+    <div class="mb-3 text-center">
+      <div>
+        <%= link_to 'Login with Google', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
       </div>
     </div>
   </div>
