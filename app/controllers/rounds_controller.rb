@@ -16,8 +16,8 @@ class RoundsController < ApplicationController
 
     SendingService.new.send_vote(round_id, vote_info, current_user_id)
 
-    flash[:success] = 'Successfully submitted, you can vote again until the end of the day!'
-    redirect_to users_dashboard_path  # TEMP FOR NOW
+    flash[:success] = 'Successfully submitted! You can change your vote until the round closes at the end of the day!'
+    redirect_to users_dashboard_path
   end
 
 
