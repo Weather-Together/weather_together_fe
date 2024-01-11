@@ -150,12 +150,23 @@
 
     // Update latitude and longitude information
     document.getElementById('latitude').innerText = 'Latitude: ' + lat;
-    document.getElementById('longitude').innerText = 'Longitude: ' + lng;
+    document.getElementById('longitude').innerText = 'Longitude: ' + handleLongitude(lng);
 
     // Update hidden form fields
     document.getElementById('latitudeField').value = lat;
-    document.getElementById('longitudeField').value = lng;
+    document.getElementById('longitudeField').value = handleLongitude(lng);
   });
+
+  function handleLongitude(lng) {
+    if (lng > 180) {
+      var diff = lng - 180;
+      lng = -(180 - diff);
+    } else if (lng < -180) {
+      var diff = lng + 180;
+      lng = 180 - diff;
+    }
+    return lng;
+  }
 </script>
 
 </body>
