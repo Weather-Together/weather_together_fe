@@ -1,5 +1,5 @@
 class RoundsController < ApplicationController
-  # before_action :require_login, only: [:public_show]
+  before_action :require_login, only: [:public_show]
 
   def public_show
     facade = RoundsFacade.new
@@ -21,12 +21,12 @@ class RoundsController < ApplicationController
   end
 
 
-  # private
+  private
 
-  # def require_login
-  #   unless session[:user_id]
-  #     flash[:error] = 'You must be logged in to access this page.'
-  #     redirect_to login_path
-  #   end
-  # end
+  def require_login
+    unless session[:user_id]
+      flash[:error] = 'You must be logged in to access this page.'
+      redirect_to login_path
+    end
+  end
 end
