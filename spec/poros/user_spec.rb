@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe User do
-  xit "exists" do
+  it "exists" do
     details = {
-     # FILL IN WITH ENDPOINT
+      id: 1,
+      email: "user@example.com"
     }
 
     user = User.new(details)
