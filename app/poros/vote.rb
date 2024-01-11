@@ -7,17 +7,24 @@ class Vote
               :lat,
               :lon,
               :weather_stats,
-              :score
+              :score,
+              :username
 
   def initialize(details)
-    @id = details[:vote_id]
     @user_id = details[:user_id]
     @round_id = details[:round_id]
     @status = details[:status]
-    @target_weather_stats = details[:target_weather_stats]
+    @target_weather_stats = JSON.parse(details[:target_weather_stats], symbolize_names: true)
     @lat = format("%.5f", details[:latitude].to_f)
     @lon = format("%.5f", details[:longitude].to_f)
-    @weather_stats = details[:weather_stats]
-    @score = details[:score]
+    if details[:weather_stats].present?
+      @weather_stats = JSON.parse(details[:weather_stats], symbolize_names: true)
+    else 
+      @weather_stats = details[:weather_stats]
+    end
+    if details[:score].present?
+      @score = format("%.2f", details[:score].to_f)
+    end
+    @username = details[:username]
   end
 end

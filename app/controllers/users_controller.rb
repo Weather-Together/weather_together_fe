@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     facade = RoundsFacade.new
     @previous_rounds = facade.previous_user_rounds(current_user_id)
     @current_round = facade.current_round_data
+    @leaderboard_scores = facade.round_result_info
   end
 
   def verify

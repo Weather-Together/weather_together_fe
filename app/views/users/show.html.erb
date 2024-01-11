@@ -99,7 +99,22 @@
         <!-- Column 3 -->
         <div class="col col-height">
           <h2>Leaderboard</h2>
-          <p>This is the content of the third column.</p>
+          <h4>Actual Location: <%= @leaderboard_scores.first.target_weather_stats[:location][:name] %></h4>
+          <h4>Actual Country: <%= @leaderboard_scores.first.target_weather_stats[:location][:country] %></h4>
+          <h4>Round Date: <%= @leaderboard_scores.first.weather_stats[:location][:localtime][0..-6] %></h4>
+          <p>
+            <% @leaderboard_scores.each_with_index do |vote, index| %>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="grey-box">
+                    <p>Position: #<%= index + 1 %></p>
+                    <p>Username: <%= vote.username %></p>
+                    <p>Score: <%= vote.score %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>
