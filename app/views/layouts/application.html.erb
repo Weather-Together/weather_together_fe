@@ -75,8 +75,8 @@
       <div class="modal-content">
         <% flash.each do |name, msg| %>
           <div class="alert">
-            <%= msg %>
-            <button class="close-btn" onclick="closeModal()">Close</button>
+            <%= msg %><br><br>
+            <button id="closeBtn" class="close-btn" onclick="closeModal()">Close</button>
           </div>
         <% end %>
       </div>
@@ -86,8 +86,10 @@
 
     <script>
       function closeModal() {
-        document.getElementById('errorModal').style.display = 'none';
-      }
+        var modal = document.getElementById('errorModal');
+        modal.style.display = 'none';
+        location.reload();
+      };
 
       document.addEventListener('turbo:load', function() {
         if (<%= flash.present? %>) {
@@ -95,7 +97,7 @@
         }
       });
 
-      document.addEventListener('turbo:before-visit', function() {
+      document.getElementById('closeBtn').addEventListener('click', function() {
         closeModal();
       });
     </script>
