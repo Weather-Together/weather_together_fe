@@ -99,9 +99,9 @@
         <!-- Column 3 -->
         <div class="col col-height">
           <h2>Leaderboard</h2>
-          <h4>Actual Location: <%= @leaderboard_scores.first.target_weather_stats[:location][:name] %></h4>
-          <h4>Actual Country: <%= @leaderboard_scores.first.target_weather_stats[:location][:country] %></h4>
-          <h4>Round Date: <%= @leaderboard_scores.first.weather_stats[:location][:localtime][0..-6] %></h4>
+          <h5>Actual Location: <%= @leaderboard_scores.first.target_weather_stats[:location][:name] %></h5>
+          <h5>Actual Country: <%= @leaderboard_scores.first.target_weather_stats[:location][:country] %></h5>
+          <h5>Round Date: <%= @leaderboard_scores.first.weather_stats[:location][:localtime][0..-6] %></h5>
           <p>
             <% @leaderboard_scores.each_with_index do |vote, index| %>
               <div class="row">
