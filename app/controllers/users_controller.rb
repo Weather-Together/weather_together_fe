@@ -29,18 +29,19 @@ class UsersController < ApplicationController
 
   def login
     service = SendingService.new
-    id = service.login_user(params[:email], params[:password]) # dig for id if needed
-    if id[:errors].first[:detail] == 'User must verify email'
+    query = service.login_user(params[:email], params[:password])
+    response = JSON.parse(query.body, symbolize_names: true)
+    if response[:errors].first[:detail] == 'User must verify email'
       flash[:error] = 'User must verify email'
       redirect_to '/login'
-    elsif id[:errors].first[:detail] == 'User must sign in through Google OAuth'
+    elsif response[:errors].first[:detail] == 'User must sign in through Google OAuth'
       flash[:error] = 'User must sign in through Google OAuth'
       redirect_to '/login'
-    elsif id[:errors].first[:detail] == 'Email and/or password are incorrect'
+    elsif response[:errors].first[:detail] == 'Email and/or password are incorrect'
       flash[:error] = 'Email and/or password are incorrect'
       redirect_to '/login'
     else
-      session[:user_id] = id
+      session[:user_id] = response
       redirect_to '/community_round'
     end
   end
