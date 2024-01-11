@@ -23,6 +23,8 @@ class UsersController < ApplicationController
   def register
     service = SendingService.new
     service.register_user(params[:username], params[:email], params[:password], params[:password_confirmation])
+    # This should be changed
+    redirect_to root_path
   end
 
   # private

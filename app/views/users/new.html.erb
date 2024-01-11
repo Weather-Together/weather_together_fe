@@ -1,13 +1,35 @@
-<h2>Create a New User</h2>
+<%= render partial: 'shared/nav' %>
 
-<%= form_with url: '/register', local: true do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username, required: true %><br>
-  <%= form.label :email %>
-  <%= form.text_field :email, required: true %><br>
-  <%= form.label :password %>
-  <%= form.password_field :password, required: true %><br>
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation, required: true %><br>
-  <%= form.submit "Create New User" %>
-<% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">Create a New User</h2>
+
+      <%= form_with url: '/register', local: true, html: { class: 'form' } do |form| %>
+        <div class="mb-3">
+          <%= form.label :username, class: 'form-label' %>
+          <%= form.text_field :username, class: 'form-control', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, class: 'form-label' %>
+          <%= form.text_field :email, class: 'form-control', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password, class: 'form-label' %>
+          <%= form.password_field :password, class: 'form-control', required: true %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :password_confirmation, class: 'form-label' %>
+          <%= form.password_field :password_confirmation, class: 'form-control', required: true %>
+        </div>
+
+        <div class="mb-3 text-center">
+          <%= form.submit "Create New User", class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
