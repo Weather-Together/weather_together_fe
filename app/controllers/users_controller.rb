@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def register
+    service = SendingService.new
+    service.register_user(params[:username], params[:email], params[:password], params[:password_confirmation])
+  end
+
   # private
 
   # def require_login
