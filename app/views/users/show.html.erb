@@ -10,68 +10,99 @@
     
     .today-details {
       padding: 20px;
+      white-space: nowrap;
+    }
+
+    .grey-box {
+      padding: 20px;
+      white-space: nowrap;
     }
   </style>
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 d-flex flex-column col-height bottom-section">
-        <div class="flex-fill">
-          <h2 style>Today's Game</h2>
-
-          <div class="today-details">
-            <p>
-              <% @current_round.votes.each_with_index do |vote, index| %>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="grey-box">
-                      <p>Vote #<%= index + 1 %></p>
-                      <p>Latitude: <%= vote.lat %></p>
-                      <p>Longitude: <%= vote.lon %></p><br>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-md-6 d-flex flex-column col-height bottom-section">
-        <div class="flex-fill">
-          <h2 class="text-center">Personal Stats</h2>
-          <div class="d-flex justify-content-center">
-            <p>
-              <% @previous_rounds.each do |round| %>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="grey-box">
-                      <p>
-                        <p>Close Date: <%= round.close_date %></p>
-                        <p>Round Type: <%= round.status %></p>
-                        <% round.votes.each do |vote| %>
-                          <p>Round Status: <%= vote.status %></p>
-                          <p>Latitude Guessed: <%= vote.lat %></p>
-                          <p>Longitude Guessed: <%= vote.lon %></p>
-                          <% if vote.score.present? %>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Column 1 with stacked sections -->
+        <div class="col-md-4 d-flex flex-column col-height">
+          <div class="flex-fill">
+            <h2>Player Stats</h2>
+            <% if @previous_rounds.present? && @previous_rounds.last.present? %>
+              <h4 class="text-center">Most Recent Score</h4>
+                <div id="last-score">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="grey-box">
+                        <p>
+                          <p>Close Date: <%= @previous_rounds.last.close_date %></p>
+                          <p>Round Type: <%= @previous_rounds.last.status %></p>
+                          <% @previous_rounds.last.votes.each do |vote| %>
+                            <p>Round Status: <%= vote.status %></p>
+                            <p>Latitude Guessed: <%= vote.lat %></p>
+                            <p>Longitude Guessed: <%= vote.lon %></p>
                             <p>Score: <%= vote.score %></p>
                           <% end %>
-                        <% end %>
-                      </p><br>
+                        </p><br>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="flex-fill">
+              <h4 class="text-center">Last Three Submissions</h4>
+                <div id="last-rounds">
+                  <% @previous_rounds.take(3).each do |round| %>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="grey-box">
+                          <div class="flex-fill">
+                            <p>Close Date: <%= round.close_date %></p>
+                            <p>Round Type: <%= round.status %></p>
+                            <% round.votes.each do |vote| %>
+                              <p>Round Status: <%= vote.status %></p>
+                              <p>Latitude Guessed: <%= vote.lat %></p>
+                              <p>Longitude Guessed: <%= vote.lon %></p>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <h4>No previous rounds available</h4>
               <% end %>
-            </p>
           </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col col-height">
+          <h2>Today's Game</h2>
+            <div class="today-details">
+              <p>
+                <% @current_round.votes.each_with_index do |vote, index| %>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="grey-box">
+                        <p>Vote #<%= index + 1 %></p>
+                        <p>Latitude: <%= vote.lat %></p>
+                        <p>Longitude: <%= vote.lon %></p><br>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </p>
+            </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col col-height">
+          <h2>Leaderboard</h2>
+          <p>This is the content of the third column.</p>
         </div>
       </div>
     </div>
-  </div>
-
 </body>
 
 </html>
