@@ -1,7 +1,13 @@
 <div class='nav-container container-fluid'>
   <nav class='navbar navbar-dark'>
-    <%= link_to '/' do %>
-      <%= image_tag 'logo.png', style: 'height: 70px; margin-right: 10px; margin-left: 15px;', class: 'navbar-brand' %>
+    <% if session[:user_id] %>
+      <%= link_to '/users/dashboard' do %>
+        <%= image_tag 'logo.png', style: 'height: 70px; margin-right: 10px; margin-left: 15px;', class: 'navbar-brand' %>
+      <% end %>
+    <% else %>
+      <%= link_to '/' do %>
+        <%= image_tag 'logo.png', style: 'height: 70px; margin-right: 10px; margin-left: 15px;', class: 'navbar-brand' %>
+      <% end %>
     <% end %>
 
     <ul class='navbar-nav ml-lg-auto d-flex flex-row'>
