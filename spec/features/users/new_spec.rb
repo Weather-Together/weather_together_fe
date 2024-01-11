@@ -1,41 +1,44 @@
-require 'rails_helper'
-
 RSpec.describe "User Registration" do
-  xit 'can create a user with a name and unique email' do
+  it 'can create a user with a name and unique email' do
     visit register_path
 
-    fill_in :user_name, with: 'User One'
-    fill_in :user_email, with:'user1@example.com'
-    fill_in :user_password, with:'password123'
-    fill_in :user_password_confirmation, with:'password123'
+    fill_in 'Username', with: 'User One' # Adjust the identifier to match your form field
+    fill_in 'Email', with:'user1@example.com' # Adjust the identifier to match your form field
+    fill_in 'Password', with:'password123' # Adjust the identifier to match your form field
+    fill_in 'Password confirmation', with:'password123' # Adjust the identifier to match your form field
     click_button 'Create New User'
 
     expect(current_path).to eq('/community_round')
-    # expect(page).to have_content("user one's Dashboard")
   end 
 
-  xit 'does not create a user if email isnt unique' do 
-    User.create(name: 'User One', email: 'notunique@example.com', password: 'password123', password_confirmation: 'password123')
+  it 'does not create a user if email isnt unique' do 
+    visit register_path
+
+    fill_in 'Username', with: 'User One' # Adjust the identifier to match your form field
+    fill_in 'Email', with:'notunique@example.com' # Adjust the identifier to match your form field
+    fill_in 'Password', with:'password123' # Adjust the identifier to match your form field
+    fill_in 'Password confirmation', with:'password123' # Adjust the identifier to match your form field
+    click_button 'Create New User'
 
     visit register_path
     
-    fill_in :user_name, with: 'User Two'
-    fill_in :user_email, with:'notunique@example.com'
-    fill_in :user_password, with:'password123'
-    fill_in :user_password_confirmation, with:'password123'
+    fill_in 'Username', with: 'User Two' # Adjust the identifier to match your form field
+    fill_in 'Email', with:'notunique@example.com' # Adjust the identifier to match your form field
+    fill_in 'Password', with:'password123' # Adjust the identifier to match your form field
+    fill_in 'Password confirmation', with:'password123' # Adjust the identifier to match your form field
     click_button 'Create New User'
 
     expect(current_path).to eq(register_path)
     expect(page).to have_content("Email has already been taken")
   end
 
-  xit 'does not create a user if password and password confirmation do not match' do
+  it 'does not create a user if password and password confirmation do not match' do
     visit register_path
 
-    fill_in :user_name, with: 'User One'
-    fill_in :user_email, with:'user1@example.com'
-    fill_in :user_password, with:'password123'
-    fill_in :user_password_confirmation, with:'otherpassword5'
+    fill_in 'Username', with: 'User One' # Adjust the identifier to match your form field
+    fill_in 'Email', with:'user1@example.com' # Adjust the identifier to match your form field
+    fill_in 'Password', with:'password123' # Adjust the identifier to match your form field
+    fill_in 'Password confirmation', with:'otherpassword5' # Adjust the identifier to match your form field
     click_button 'Create New User'
 
     expect(current_path).to eq(register_path)
