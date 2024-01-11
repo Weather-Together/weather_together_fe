@@ -41,12 +41,6 @@ RSpec.configure do |config|
 
   # Capybara.default_host = 'http://example.org'
 
-  # OmniAuth.config.test_mode = true
-  # OmniAuth.config.add_mock(:google, {
-  #   :uid => '123',
-  #   :email => 'st@gmail.com'
-  # })
-
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
