@@ -14,6 +14,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Basic Bootstrap Template</title>
+
+    <style>
+      .popup-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        cursor: pointer;
+      }
+    </style>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTBvNtHHfTn6L4L4awv9Cg6Rdi85Lc3N"
@@ -26,6 +41,30 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
       integrity="sha384-Y3UDbPn6TpSREZVeU2XsCMXvHznGfe1eVToKoWd40EvrKtkLoT/JOrme3Q+J5cpX"
       crossorigin="anonymous">
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Wait for the DOM to be fully loaded
+        var flashMessages = document.querySelectorAll('.popup-message');
+
+        flashMessages.forEach(function(message) {
+          // Display each message as a popup
+          showMessagePopup(message);
+        });
+
+        function showMessagePopup(message) {
+          // Close the popup when clicked
+          message.addEventListener('click', function() {
+            message.style.display = 'none';
+          });
+
+          // Set a timeout to automatically close the popup after a certain time
+          setTimeout(function() {
+            message.style.display = 'none';
+          }, 5000); // Adjust the time (in milliseconds) as needed
+        }
+      });
     </script>
   </head>
 
