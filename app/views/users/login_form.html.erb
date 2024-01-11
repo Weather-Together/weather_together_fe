@@ -23,17 +23,40 @@
 </head>
 
 <body>
-  <div class="container-fluid d-flex justify-content-center align-items-center vh-100 text-center">
-    <div>
-      <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center">Login</h2>
 
-      <div>
-        <%= link_to 'Google Login', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
+        <%= form_with url: '/register', local: true, html: { class: 'form' } do |form| %>
+
+          <div class="mb-3">
+            <%= form.label :email, class: 'form-label' %>
+            <%= form.text_field :email, class: 'form-control', required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :password, class: 'form-label' %>
+            <%= form.password_field :password, class: 'form-control', required: true %>
+          </div>
+
+          <div class="mb-3 text-center">
+            <%= form.submit "Create New User", class: 'btn btn-primary btn-block' %>
+          </div>
+        <% end %>
       </div>
+    </div>
 
-      <div>
-        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3', id: 'google_signup' %>
+    <!-- Move the Google buttons below the login form -->
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-6 text-center">
+        <div>
+          <%= link_to 'Login with Google', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
+        </div>
+
+        <div>
+          <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3', id: 'google_signup' %>
+        </div>
       </div>
     </div>
   </div>
