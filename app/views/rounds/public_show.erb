@@ -84,25 +84,21 @@
         <div id="gridContainer">
           <!-- Add a text header and a grid box for each item -->
           <div>
-            <div id="gridHeader">High Temperature</div>
+            <div id="gridHeader">High Temperature (°F)</div>
             <div id="gridBox"><%= @target_weather_data[:maxtemp_f] %></div>
           </div>
           <div>
-            <div id="gridHeader">Low Temperature</div>
+            <div id="gridHeader">Low Temperature (°F)</div>
             <div id="gridBox"><%= @target_weather_data[:mintemp_f] %></div>
           </div>
           <div>
-            <div id="gridHeader">Average Humidity</div>
+            <div id="gridHeader">Average Humidity (%)</div>
             <div id="gridBox"><%= @target_weather_data[:avghumidity] %></div>
           </div>
           <div>
-            <div id="gridHeader">Max Wind Speed</div>
+            <div id="gridHeader">Max Wind Speed (mph)</div>
             <div id="gridBox"><%= @target_weather_data[:maxwind_mph] %></div>
           </div>
-          <%# <div>
-            <div id="gridHeader">Air Quality</div>
-            <%# <div id="gridBox"><%= @target_weather_data </div> %>
-          <%# </div> %>
           <div>
             <div id="gridHeader">Precipitation (inches)</div>
             <div id="gridBox"><%= @target_weather_data[:totalprecip_in] %></div>
@@ -113,6 +109,7 @@
           <h4>Marker Location:</h4>
           <p id="latitude">Latitude: </p>
           <p id="longitude">Longitude: </p>
+          <p> Note: Do not submit your vote in the ocean or Antarctica or you will be assigned a random vote. </p>
         </div>
 
         <!-- Button -->
