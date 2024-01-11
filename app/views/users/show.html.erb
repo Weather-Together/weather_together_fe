@@ -3,6 +3,14 @@
 
 <head>
   <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    
+    .today-details {
+      padding: 20px;
+    }
   </style>
 </head>
 
@@ -11,20 +19,24 @@
     <div class="row">
       <div class="col-md-6 d-flex flex-column col-height bottom-section">
         <div class="flex-fill">
-          <h2>Today's Game</h2>
-          <p>
-            <% @current_round.votes.each_with_index do |vote, index| %>
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="grey-box">
-                    <p>Vote #<%= index + 1 %></p>
-                    <p>Latitude: <%= vote.lat %></p>
-                    <p>Longitude: <%= vote.lon %></p><br>
+          <h2 style>Today's Game</h2>
+
+          <div class="today-details">
+            <p>
+              <% @current_round.votes.each_with_index do |vote, index| %>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="grey-box">
+                      <p>Vote #<%= index + 1 %></p>
+                      <p>Latitude: <%= vote.lat %></p>
+                      <p>Longitude: <%= vote.lon %></p><br>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
-          </p>
+              <% end %>
+            </p>
+          </div>
+
         </div>
       </div>
 

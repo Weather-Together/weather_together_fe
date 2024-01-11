@@ -15,8 +15,8 @@ class Vote
     @round_id = details[:round_id]
     @status = details[:status]
     @target_weather_stats = details[:target_weather_stats]
-    @lat = details[:latitude]
-    @lon = details[:longitude]
+    @lat = format("%.5f", details[:latitude].to_f)
+    @lon = format("%.5f", details[:longitude].to_f)
     @weather_stats = details[:weather_stats]
     @score = details[:score]
   end
