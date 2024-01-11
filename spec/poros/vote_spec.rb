@@ -30,3 +30,4 @@ RSpec.describe Vote do
     expect(subject.score).to eq(10)
   end
 end
+
