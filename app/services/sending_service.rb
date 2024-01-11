@@ -4,8 +4,8 @@ class SendingService < WeatherTogetherService
     conn.post('users/oauth_login', email, "Content-Type" => "application/json")
   end
   
-  def send_vote(round_id, vote_info)
-    conn.post("users/#{session[:user_id]}/rounds/#{round_id}/votes/new", vote_info.to_json, "Content-Type" => "application/json")
+  def send_vote(round_id, vote_info, user_id)
+    conn.post("users/#{user_id}/rounds/#{round_id}/votes/new", vote_info.to_json, "Content-Type" => "application/json")
   end
 
   def register_user(username, email, password, password_confirmation)

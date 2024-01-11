@@ -9,7 +9,7 @@ class RoundsFacade
 
   def previous_user_rounds(user_id)
     service = ReceivingService.new
-    response = service.previous_rounds[:data] # Array of last three rounds
+    response = service.previous_rounds(user_id)[:data] # Array of last three rounds, MIGHT NOT NEED USERID
     last_three_rounds = response.map do |round|
       details =  {
         round_id: round[:id],
