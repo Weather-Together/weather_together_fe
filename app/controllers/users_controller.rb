@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     facade = RoundsFacade.new
-    @previous_rounds = facade.previous_user_rounds(session[:user_id])
+    @previous_rounds = facade.previous_user_rounds(current_user_id)
     @current_round = facade.current_round_data
   end
 
