@@ -7,6 +7,19 @@ class UsersController < ApplicationController
     @current_round = facade.current_round_data
   end
 
+  def verify
+    service = ReceivingService.new
+    response = service.authenticate_user(params[:user_id], params[:token])
+    if response[:message] == 'Successfully verified user'
+      flash[:success] = 'Successfully Verified'
+      session[:user_id] = params[:user_id]
+      redirect_to '/community_round'
+    else
+      flash[:error] = 'Email does not match verification token'
+      redirect_to root_path
+    end
+  end
+
   # private
 
   # def require_login

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form'
   # post '/login', to: 'users#login'
   # post '/logout', to: 'users#logout'
-
   get '/users/dashboard', to: 'users#show'
+  get '/verify_account/:user_id/:token', to: 'users#verify'
 
   # get '/rounds/votes/index', to: 'rounds/votes#index'
 
