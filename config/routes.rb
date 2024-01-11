@@ -14,13 +14,11 @@ Rails.application.routes.draw do
   post '/community_round/submit', to: 'rounds#submit_vote'
   
   get '/users/new', to: 'users#new'
+  post '/register', to: 'users#register'
   get '/login', to: 'users#login_form'
-  # post '/login', to: 'users#login'
-  # post '/logout', to: 'users#logout'
-
+  post '/login', to: 'users#login'
   get '/users/dashboard', to: 'users#show'
-
-  # get '/rounds/votes/index', to: 'rounds/votes#index'
+  get '/verify_account/:user_id/:token', to: 'users#verify'
 
   get '/auth/google_oauth2/callback', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy'

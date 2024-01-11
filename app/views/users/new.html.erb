@@ -1,41 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <%= render partial: 'shared/nav' %>
+<%= render partial: 'shared/nav' %>
 
-  <script src="https://apis.google.com/js/platform.js?onload=initGoogleSignIn" async defer></script>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">Create a New User</h2>
 
-  <style>
-    body {
-      overflow: hidden;
-    }
+      <%= form_with url: '/register', local: true, html: { class: 'form' } do |form| %>
+        <div class="mb-3">
+          <%= form.label :username, class: 'form-label' %>
+          <%= form.text_field :username, class: 'form-control', required: true %>
+        </div>
 
-    #google_signup {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 5px;
-    }
-  </style>
-</head>
+        <div class="mb-3">
+          <%= form.label :email, class: 'form-label' %>
+          <%= form.text_field :email, class: 'form-control', required: true %>
+        </div>
 
-<body>
-  <div class="container-fluid d-flex justify-content-center align-items-center vh-100 text-center">
-    <div>
-      <%# <meta name="google-signin-client_id" content="173864330669-0kd95lff9amkp0ku3a0e6tn6dn9klnvh.apps.googleusercontent.com"> %>
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <div class="mb-3">
+          <%= form.label :password, class: 'form-label' %>
+          <%= form.password_field :password, class: 'form-control', required: true %>
+        </div>
 
-      <div>
-        <%= link_to 'Google Login', '/auth/google_oauth2', class: 'btn btn-primary mt-3 mr-2' %>
-      </div>
+        <div class="mb-4">
+          <%= form.label :password_confirmation, class: 'form-label' %>
+          <%= form.password_field :password_confirmation, class: 'form-control', required: true %>
+        </div>
 
-      <div>
-        <%= link_to 'Create a new Google account', 'https://accounts.google.com/signup', class: 'btn btn-primary mt-3', id: 'google_signup' %>
-      </div>
+        <div class="mb-3 text-center">
+          <%= form.submit "Create New User", class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
     </div>
   </div>
-</body>
-</html>
+</div>
