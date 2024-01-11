@@ -10,4 +10,8 @@ class ReceivingService < WeatherTogetherService
   def authenticate_user(id, token)
     get_response("users/#{id}/verify_account/#{token}")
   end
+
+  def round_results
+    get_response('rounds/most_recent/results')
+  end
 end

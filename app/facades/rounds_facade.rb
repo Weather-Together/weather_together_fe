@@ -42,4 +42,11 @@ class RoundsFacade
       Vote.new(vote)
     end
   end
+
+  def round_result_info
+    service = ReceivingService.new
+    response = service.round_results[:data].map do |vote|
+      Vote.new(vote[:attributes])
+    end
+  end
 end
