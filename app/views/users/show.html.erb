@@ -5,21 +5,6 @@
 
 <head>
   <style>
-    body, html {
-        height: 100%;
-        margin: 0; /* Remove default margin */
-        padding: 0; /* Remove default padding */
-    }
-
-    /* Set height for the top and bottom sections */
-    .top-section, .bottom-section {
-        height: 50%;
-    }
-
-    /* Set height for columns to take up 80% of the vertical space */
-    .col-height {
-        height: 80vh;
-    }
   </style>
 </head>
 
@@ -31,9 +16,15 @@
           <h2>Today's Game</h2>
           <p>
             <% @current_round.votes.each_with_index do |vote, index| %>
-              <p>Vote #<%= index + 1 %></p>
-              <p>Latitude: <%= vote.lat %></p>
-              <p>Longitude: <%= vote.lon %></p><br>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="grey-box">
+                    <p>Vote #<%= index + 1 %></p>
+                    <p>Latitude: <%= vote.lat %></p>
+                    <p>Longitude: <%= vote.lon %></p><br>
+                  </div>
+                </div>
+              </div>
             <% end %>
           </p>
         </div>
@@ -41,23 +32,31 @@
 
       <div class="col-md-6 d-flex flex-column col-height bottom-section">
         <div class="flex-fill">
-          <h2>Personal Stats</h2>
-          <p>
-            <% @previous_rounds.each do |round| %>
-              <p>
-                <p>Close Date: <%= round.close_date %></p>
-                <p>Round Type: <%= round.status %></p>
-                <% round.votes.each do |vote| %>
-                  <p>Round Status: <%= vote.status %></p>
-                  <p>Latitude Guessed: <%= vote.lat %></p>
-                  <p>Longitude Guessed: <%= vote.lon %></p>
-                  <% if vote.score.present? %>
-                    <p>Score: <%= vote.score %></p>
-                  <% end %>
-                <% end %>
-              </p><br>
-            <% end %>
-          </p>
+          <h2 class="text-center">Personal Stats</h2>
+          <div class="d-flex justify-content-center">
+            <p>
+              <% @previous_rounds.each do |round| %>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="grey-box">
+                      <p>
+                        <p>Close Date: <%= round.close_date %></p>
+                        <p>Round Type: <%= round.status %></p>
+                        <% round.votes.each do |vote| %>
+                          <p>Round Status: <%= vote.status %></p>
+                          <p>Latitude Guessed: <%= vote.lat %></p>
+                          <p>Longitude Guessed: <%= vote.lon %></p>
+                          <% if vote.score.present? %>
+                            <p>Score: <%= vote.score %></p>
+                          <% end %>
+                        <% end %>
+                      </p><br>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
