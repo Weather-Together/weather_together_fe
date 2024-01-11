@@ -1,18 +1,27 @@
-require "rails_helper"
+require 'spec_helper'
+require_relative '../../app/poros/round'
 
 RSpec.describe Round do
-  xit "exists" do
-    details = {
-     # FILL IN WITH ENDPOINT
-    }
+  let(:details) { { close_date: '2022-01-01', target_weather_stats: { temperature: 25, humidity: 50 }, status: 'open' } }
+  let(:vote_data) { [1, 2, 3] }
 
-    round = Round.new(details)
+  subject { described_class.new(details, vote_data) }
 
-    expect(round).to be_a Round
-    expect(round.close_date).to be_a String
-    expect(round.number_ofvotes).to be_a Integer
-    expect(round.status).to be_a Integer
-    expect(round.game_id).to be_a Integer
-    expect(round.votes).to be_a Array 
+  describe '#initialize' do
+    it 'sets the close_date' do
+      expect(subject.close_date).to eq('2022-01-01')
+    end
+
+    it 'sets the target_weather_stats' do
+      expect(subject.target_weather_stats).to eq({ temperature: 25, humidity: 50 })
+    end
+
+    it 'sets the status' do
+      expect(subject.status).to eq('open')
+    end
+
+    it 'sets the votes' do
+      expect(subject.votes).to eq([1, 2, 3])
+    end
   end
 end

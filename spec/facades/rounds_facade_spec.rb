@@ -4,28 +4,45 @@ RSpec.describe RoundsFacade, type: :facade do
   describe 'Round Facade Instance Methods', :vcr do
     before(:each) do
       @facade = RoundsFacade.new  
+      allow_any_instance_of(WeatherTogetherService).to receive(:get_response).and_return({ key: 'value' }) 
+      allow_any_instance_of(ReceivingService).to receive(:previous_rounds).and_return({ 
+        data: [{ 
+          attributes: { 
+            close_date: '2022-01-01', 
+            target_weather_stats: {}, 
+            status: 'open', 
+            votes: [] 
+          } 
+        }] 
+      }) 
+      allow_any_instance_of(ReceivingService).to receive(:current_round).and_return({ 
+        data: { 
+          attributes: { 
+            close_date: '2022-01-01', 
+            target_weather_stats: '{"weather_data": {}}', 
+            status: 'open', 
+            votes: [] 
+          } 
+        } 
+      }) 
     end
 
     it "exists" do
       expect(@facade).to be_a(RoundsFacade)
     end
 
-    xit "#target_weather_data" do
+    it "#target_weather_data" do
       result = @facade.target_weather_data
 
       expect(result).to be_a(Hash)
     end
 
-    xit "#previous_user_rounds" do
-      results = @facade.previous_user_rounds
+    it "#previous_user_rounds" do
+      user_id = 1 
+      results = @facade.previous_user_rounds(user_id)
 
       results.each do |previous_round|
         expect(previous_round).to be_a(Round)
-        expect(movie).to respond_to(:close_date)
-        expect(movie).to respond_to(:number_of_votes)
-        expect(movie).to respond_to(:target_weather_stats)
-        expect(movie).to respond_to(:game_id)
-        expect(movie).to respond_to(:votes)
       end
     end
 
