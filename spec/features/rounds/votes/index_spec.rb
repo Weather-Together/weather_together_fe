@@ -10,14 +10,15 @@ RSpec.describe 'Results Page', type: :feature, js: true do
     Capybara.javascript_driver = :selenium
   end
 
-  
-  xit 'renders the results page' do
-    visit '/users/dashboard' # replace with the actual path
-     OmniAuth.config.add_mock(:google, {
+  it 'renders the results page' do
+    OmniAuth.config.add_mock(:google, {
       uid: '123',
       info: { email: 'st@gmail.com' },
       credentials: { token: 'mock_token', expires_at: Time.now + 1.day }
     })
+
+  visit '/users/dashboard' # replace with the actual path
+
     sleep 1 
     doc = Nokogiri::HTML(page.body)
 

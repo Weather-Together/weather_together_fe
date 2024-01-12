@@ -8,6 +8,9 @@ RSpec.feature 'Show', type: :feature do
       credentials: { token: 'mock_token', expires_at: Time.now + 1.day }
     })
 
+    # Mock the get_response method to return a valid JSON
+    allow_any_instance_of(WeatherTogetherService).to receive(:previous_round).and_return({ data: { attributes: {} } })
+
     visit '/login'
     click_link 'Login with Google'
     visit '/users/dashboard'

@@ -7,6 +7,6 @@ RSpec.describe "User Registration" do
     fill_in 'Password confirmation', with:'password123' # Adjust the identifier to match your form field
     click_button 'Create New User'
 
-    expect(current_path).to eq('/')
+    expect(current_path).to eq('/verification_form')
   end
 end
