@@ -127,6 +127,7 @@ To get a local copy up and running follow these simple example steps.
   
     tomtom:
       key: <YOUR API KEY>
+    
     google:
      client_id: <YOUR CLIENT ID>
      secret_id: <YOUR SECRET ID>
