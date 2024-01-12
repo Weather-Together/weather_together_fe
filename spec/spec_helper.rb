@@ -12,6 +12,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -26,7 +27,19 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+
+    # Configure OmniAuth test mode
+    config.before(:each, type: :feature) do
+      OmniAuth.config.test_mode = true
+    end
+
+    # Reset OmniAuth test mode after each example
+    config.after(:each, type: :feature) do
+      OmniAuth.config.test_mode = false
+    end
   end
+
+  # Capybara.default_host = 'http://example.org'
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.

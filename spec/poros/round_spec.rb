@@ -25,3 +25,4 @@ RSpec.describe Round do
     expect(round.votes.length).to eq(vote_data.length)
   end
 end
+

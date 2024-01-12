@@ -50,6 +50,12 @@ gem 'faraday'
 
 gem 'omniauth-google-oauth2'
 
+gem 'selenium-webdriver'
+
+gem 'nokogiri'
+
+gem "launchy"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -64,6 +70,8 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "pry"
+  gem "webmock"
+  gem "vcr"
 end
 
 group :development do

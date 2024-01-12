@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  root 'welcome#index'
+    root 'welcome#index'
 
   get '/community_round', to: 'rounds#public_show'
   post '/community_round/submit', to: 'rounds#submit_vote'
   
-  get '/users/new', to: 'users#new'
+  get '/register', to: 'users#new' 
   post '/register', to: 'users#register'
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login'

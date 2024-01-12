@@ -1,16 +1,16 @@
-require "rails_helper"
+require 'spec_helper'
+require_relative '../../app/poros/user'
 
 RSpec.describe User do
-  it "exists" do
-    details = {
-      id: 1,
-      email: "user@example.com"
-    }
+  
+  describe '#initialize' do
+    it 'sets the id and email' do
+      details = { id: 1, email: 'test@example.com' }
+      user = User.new(details)
 
-    user = User.new(details)
-
-    expect(user).to be_a User
-    expect(user.id).to be_a Integer
-    expect(user.email).to be_a String
+      expect(user.id).to eq(1)
+      expect(user.email).to eq('test@example.com')
+    end
   end
 end
+
