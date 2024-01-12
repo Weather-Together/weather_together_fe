@@ -8,9 +8,6 @@
 
 
 
-
-
-
 <!-- PROJECT LOGO  -->
 <br />
 <div align="center">
@@ -59,7 +56,7 @@ The goal of this app is to provide public education and increase awareness of ge
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contributers">Contributers</a></li>
+    <li><a href="#contributors">Contributors</a></li>
   </ol>
 </details>
 
@@ -108,13 +105,11 @@ The goal of this app is to provide public education and increase awareness of ge
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
 
-UPDATE WITH ANY OR REMOVE
 
 ### Installation
 
-1. Get a free TomTom API Key at [https://developer.tomtom.com/](https://developer.tomtom.com/knowledgebase/platform/articles/how-to-get-an-tomtom-api-key/) and a Google client ID and secret ID [here](https://console.cloud.google.com/getting-started?supportedpurview=project) and follow [these](https://www.balbooa.com/help/gridbox-documentation/integrations/other/google-client-id) instructions
+1. Get a free TomTom API Key at [https://developer.tomtom.com/](https://developer.tomtom.com/knowledgebase/platform/articles/how-to-get-an-tomtom-api-key/) and a Google Cloud Platform client ID and secret ID [here](https://console.cloud.google.com/getting-started?supportedpurview=project) and follow [these](https://www.balbooa.com/help/gridbox-documentation/integrations/other/google-client-id) instructions
 
 2. Clone the repo
    ```sh
@@ -156,7 +151,7 @@ This portion of the app handles the frontend functionality of the game:
 * Collects user input through location guesses on an externally consumed interactive map and passes this information to the backend portion of the application.
 * Displays results to the user calculcated from the backend.
 
-* [Google OAuth](https://developers.google.com/identity/protocols/oauth2) is utilized for secure and convenient user authentication. It allows users to sign in with their Google credentials, ensuring a streamlined and familiar login process.
+* [Google OAuth](https://developers.google.com/identity/protocols/oauth2) is utilized for secure and convenient user authentication. It allows users to create a game acoount and to sign in with their Google credentials, ensuring a streamlined and familiar login process.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,15 +165,16 @@ This portion of the app handles the frontend functionality of the game:
     - [ ] Account verification and activation, through email link
 - [ ] User Login (Basic)
 - [ ] User Login (Expanded)
-    - [ ] Two Factor Authentication
-    - [ ] Passwordless Login
-- [ ] Interactive Map Selector
+    - [ ] Passwordless Login Using Google OAuth
+- [ ] Interactive Map Selector 
     - [ ] Map Display
-    - [ ] Pin Drop at a Lat/Lon
+    - [ ] Pin Drop at a Lat/Lon Upon Click
+    - [ ] Display of Current Pin Location, Submit
 - [ ] User Dashboard
-- [ ] Results 
+    - [ ] Recent User Rounds
+    - [ ] Daily Vote Submissions
+    - [ ] Most Recent Caulcated Results (4 Days Back)  
 - [ ] Mobile Functionality
-- [ ] Decorator
 - [ ] Addition of Private Games
 
 
@@ -220,17 +216,17 @@ John O'leary
 [![LinkedIn][linkedin-shield]][linkedin-url-jo] 
 [![GitHub][github-shield-jo]][github-url-jo]
 
- Sam Tran 
+
+Sam Tran 
  
- [![LinkedIn][linkedin-shield]][linkedin-url-st]
- [![GitHub][github-shield-st]][github-url-st]
+[![LinkedIn][linkedin-shield]][linkedin-url-st]
+[![GitHub][github-shield-st]][github-url-st]
 
 
 Kevin Zolman 
 
-[![LinkedIn][linkedin-shield]][linkedin-url-kz][![GitHub][github-shield-kz]][github-url-kz]
-
-
+[![LinkedIn][linkedin-shield]][linkedin-url-kz]
+[![GitHub][github-shield-kz]][github-url-kz]
 
 
 
