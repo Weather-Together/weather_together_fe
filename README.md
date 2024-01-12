@@ -5,9 +5,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![Build Status](https://img.shields.io/github/workflow/status/Weather-Together/weather_together_be/main/main)](https://github.com/Weather-Together/weather_together_be/actions)
 
-[![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)](https://example.com/coverage-report)
 
 
 
@@ -17,13 +15,15 @@
 <br />
 <div align="center">
   <a href="https://github.com/Weather-Together/weather_together_fe">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo_480.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Weather Together</h3>
 
   <p align="center">
-    project_description
+    Weather Together is a game app where a daily set of weather data is displayed to the user (player) from a randomly selected location in the world. Each day the player guesses a location where they think this weather data was collected through an interactive map selector. They are able to keep track of prior guesses as well as track their progress on a leaderboard.
+
+The goal of this app is to provide public education and increase awareness of general global climate trends in a fun and interactive manner.
     <br />
     <a href="https://github.com/Weather-Together/weather_together_fe"><strong>Explore the docs »</strong></a>
     <br />
@@ -68,7 +68,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](FINAL URL LATER)
+<img src="images/Map_WT.png" alt="Map" width="400" height="200">
+
+[![Weather Together](https://img.shields.io/badge/Weather%20Together-Visit%20Website-blue?style=for-the-badge)](https://weather-together.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,6 +95,10 @@
 * [![factory_bot_rails][gem-factory_bot_rails]][gem-factory_bot_rails-url]
 * [![faker][gem-faker]][gem-faker-url]
 * [![pry][gem-pry]][gem-pry-url]
+* [![Selenium Webdriver](https://img.shields.io/badge/selenium--webdriver-4.16.0-brightgreen?style=flat-square)](https://rubygems.org/gems/selenium-webdriver)
+* [![Nokogiri](https://img.shields.io/badge/nokogiri-1.8.5-yellow?style=flat-square)](https://rubygems.org/gems/nokogiri)
+* [![Launchy](https://img.shields.io/badge/launchy-2.5.2-orange?style=flat-square)](https://rubygems.org/gems/launchy)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -118,22 +124,19 @@ UPDATE WITH ANY OR REMOVE
    ```sh
    EDITOR="code --wait" rails credentials:edit
    ```
-  In editor pop up
-  ```ruby
-  weather_api:
-    key: <YOUR API KEY>
-
-  tomtom:
-    key: <YOUR API KEY>
-
-google:
-    client_id: <YOUR CLIENT ID>
-    secret_id: <YOUR SECRET ID>
-  ```
-4. Gem Bundle
-   ```sh
+    In editor pop up
+    ```ruby
+  
+    tomtom:
+      key: <YOUR API KEY>
+    google:
+     client_id: <YOUR CLIENT ID>
+     secret_id: <YOUR SECRET ID>
+    ```
+4.  Gem Bundle
+    ```sh
     bundle
-   ```
+    ```
 5. Rake
    ```sh
     rails db:{drop,create,migrate,seed}
@@ -146,15 +149,14 @@ google:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Weather Together is a game app where a daily set of weather data is displayed to the user (player) from a randomly selected location in the world. Each day the player guesses a location where they think this weather data was collected through an interactive map selector. They are able to keep track of prior guesses as well as track their progress on a leaderboard.
-
-The goal of this app is to provide public education and increase awareness of general global climate trends in a fun and interactive manner.
 
 This portion of the app handles the frontend functionality of the game:
 * Handles user account creation, verification, and login.
 * Provides the user interface for the app.
 * Collects user input through location guesses on an externally consumed interactive map and passes this information to the backend portion of the application.
 * Displays results to the user calculcated from the backend.
+
+* [Google OAuth](https://developers.google.com/identity/protocols/oauth2) is utilized for secure and convenient user authentication. It allows users to sign in with their Google credentials, ensuring a streamlined and familiar login process.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,7 +192,7 @@ See the [open issues](https://github.com/Weather-Together/weather_together_fe/is
 <!-- CONTACT -->
 ## Contact
 
-Organization: Weather Together - UPDATE WITH FUTURE EMAIL
+Organization: Weather Together - WeatherTogether2308@gmail.com
 
 Organization Link: [https://github.com/Weather-Together](https://github.com/Weather-Together)
 
@@ -202,11 +204,33 @@ Project Link: [https://github.com/Weather-Together/weather_together_fe](https://
 
 ## Contributors
 
-[![LinkedIn][linkedin-shield]][linkedin-url-mk] Michael Kuhlmeier
-[![LinkedIn][linkedin-shield]][linkedin-url-bk] Blaine Kennedy
-[![LinkedIn][linkedin-shield]][linkedin-url-jo] John O'leary
-[![LinkedIn][linkedin-shield]][linkedin-url-st] Sam Tran
-[![LinkedIn][linkedin-shield]][linkedin-url-kz] Kevin Zolman
+Michael Kuhlmeier 
+ 
+[![LinkedIn][linkedin-shield]][linkedin-url-mk]
+[![GitHub][github-shield-mk]][github-url-mk]
+
+Blaine Kennedy 
+
+[![LinkedIn][linkedin-shield]][linkedin-url-bk] 
+[![GitHub][github-shield-bk]][github-url-bk]
+
+
+John O'leary 
+
+[![LinkedIn][linkedin-shield]][linkedin-url-jo] 
+[![GitHub][github-shield-jo]][github-url-jo]
+
+ Sam Tran 
+ 
+ [![LinkedIn][linkedin-shield]][linkedin-url-st]
+ [![GitHub][github-shield-st]][github-url-st]
+
+
+Kevin Zolman 
+
+[![LinkedIn][linkedin-shield]][linkedin-url-kz][![GitHub][github-shield-kz]][github-url-kz]
+
+
 
 
 
@@ -255,3 +279,18 @@ Project Link: [https://github.com/Weather-Together/weather_together_fe](https://
 [gem-faker-url]: https://github.com/faker-ruby/faker
 [gem-pry]: https://img.shields.io/badge/pry-0.14.2-yellow?style=flat-square
 [gem-pry-url]: https://github.com/pry/pry
+
+[github-shield-mk]: https://img.shields.io/badge/GitHub-mbkuhl-success?style=for-the-badge&logo=github
+[github-url-mk]: https://github.com/mbkuhl
+
+[github-shield-jo]: https://img.shields.io/badge/GitHub-Captainlearyo-success?style=for-the-badge&logo=github
+[github-url-jo]: https://github.com/Captainlearyo
+
+[github-shield-st]: https://img.shields.io/badge/GitHub-Sykogst-success?style=for-the-badge&logo=github
+[github-url-st]: https://github.com/Sykogst
+
+[github-shield-kz]: https://img.shields.io/badge/GitHub-zkevkev-success?style=for-the-badge&logo=github
+[github-url-kz]: https://github.com/zkevkev
+
+[github-shield-bk]: https://img.shields.io/badge/GitHub-bkchilidawg-success?style=for-the-badge&logo=github
+[github-url-bk]: https://github.com/bkchilidawg
