@@ -218,7 +218,7 @@ Blaine Kennedy
 [![GitHub][github-shield-bk]][github-url-bk]
 
 
-John O'leary 
+John O'Leary 
 
 [![LinkedIn][linkedin-shield]][linkedin-url-jo] 
 [![GitHub][github-shield-jo]][github-url-jo]
