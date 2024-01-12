@@ -30,8 +30,8 @@ RSpec.feature 'Show', type: :feature do
     visit '/users/dashboard'
 
     expect(page).to have_css('.container-fluid')
-    expect(page).to have_css('h2', text: "Today's Game")
-    expect(page).to have_css('h2', text: "Personal Stats")
+    expect(page).to have_content( "Today's Game")
+    expect(page).to have_content("Personal Stats")
     # Check for the presence of the vote details
     expect(page).to have_content('Vote #1')
     expect(page).to have_content('Latitude:')

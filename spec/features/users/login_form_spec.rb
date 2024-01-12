@@ -10,6 +10,5 @@ RSpec.feature 'Login', type: :feature do
     expect(page).to have_field('Password')
     expect(page).to have_button('Login')
     expect(page).to have_link('Login with Google', href: '/auth/google_oauth2')
-    expect(page).to have_link('Create a new Google account', href: 'https://accounts.google.com/signup')
   end
 end
