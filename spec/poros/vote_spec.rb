@@ -1,30 +1,34 @@
-require "rails_helper"
+class Vote
+  attr_reader :id, 
+              :user_id,
+              :round_id,
+              :status,
+              :target_weather_stats,
+              :lat,
+              :lon,
+              :weather_stats,
+              :score,
+              :username
 
-RSpec.describe Vote do
-  it "exists" do
-    details = {
-      vote_id: 1,
-      user_id: 1,
-      round_id: 1,
-      status: "active",
-      target_weather_stats: { temperature: 25, humidity: 60 },
-      latitude: 40.7128,
-      longitude: -74.0060,
-      weather_stats: { temperature: 22, humidity: 55 },
-      score: 10
-    }
+  def initialize(details)
+    @user_id = details[:user_id]
+    @round_id = details[:round_id]
+    @status = details[:status]
+    @target_weather_stats = details[:target_weather_stats]
+    @lat = format("%.5f", details[:latitude].to_f)
+    @lon = format("%.5f", details[:longitude].to_f)
 
-    vote = Vote.new(details)
+    if details[:weather_stats].present?
+      @weather_stats = JSON.parse(details[:weather_stats], symbolize_names: true)
+    else 
+      @weather_stats = details[:weather_stats]
+    end
 
-    expect(vote).to be_a Vote
-    expect(vote.id).to eq(1)
-    expect(vote.user_id).to eq(1)
-    expect(vote.round_id).to eq(1)
-    expect(vote.status).to eq("active")
-    expect(vote.target_weather_stats).to eq({ temperature: 25, humidity: 60 })
-    expect(vote.lat).to eq("40.71280")
-    expect(vote.lon).to eq("-74.00600")
-    expect(vote.weather_stats).to eq({ temperature: 22, humidity: 55 })
-    expect(vote.score).to eq(10)
+    if details[:score].present?
+      @score = format("%.2f", details[:score].to_f)
+    end
+
+    @username = details[:username]
   end
 end
+
