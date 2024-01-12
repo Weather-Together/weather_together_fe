@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/users/dashboard', to: 'users#show'
   get '/verify_account/:user_id/:token', to: 'users#verify'
+  get '/verification_form', to: 'users#verification_form'
 
   get '/auth/google_oauth2/callback', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy'

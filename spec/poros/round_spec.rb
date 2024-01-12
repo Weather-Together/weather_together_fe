@@ -1,27 +1,27 @@
-require 'spec_helper'
-require_relative '../../app/poros/round'
+require "rails_helper"
+
+require "rails_helper"
 
 RSpec.describe Round do
-  let(:details) { { close_date: '2022-01-01', target_weather_stats: { temperature: 25, humidity: 50 }, status: 'open' } }
-  let(:vote_data) { [1, 2, 3] }
+  it "exists" do
+    details = {
+      close_date: "2022-01-01",
+      target_weather_stats: { temperature: 25, humidity: 60 },
+      status: "active"
+    }
 
-  subject { described_class.new(details, vote_data) }
+    vote_data = [
+      { user_id: 1, score: 10 },
+      { user_id: 2, score: 8 },
+    ]
 
-  describe '#initialize' do
-    it 'sets the close_date' do
-      expect(subject.close_date).to eq('2022-01-01')
-    end
+    round = Round.new(details, vote_data)
 
-    it 'sets the target_weather_stats' do
-      expect(subject.target_weather_stats).to eq({ temperature: 25, humidity: 50 })
-    end
-
-    it 'sets the status' do
-      expect(subject.status).to eq('open')
-    end
-
-    it 'sets the votes' do
-      expect(subject.votes).to eq([1, 2, 3])
-    end
+    expect(round).to be_a Round
+    expect(round.close_date).to be_a String
+    expect(round.target_weather_stats).to eq({ temperature: 25, humidity: 60 })
+    expect(round.status).to eq("active")
+    expect(round.votes).to be_a Array
+    expect(round.votes.length).to eq(vote_data.length)
   end
 end

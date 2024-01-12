@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     facade = RoundsFacade.new
     @previous_rounds = facade.previous_user_rounds(current_user_id)
     @current_round = facade.current_round_data
+    @leaderboard_scores = facade.round_result_info
   end
 
   def verify
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   def register
     service = SendingService.new
     service.register_user(params[:username], params[:email], params[:password], params[:password_confirmation])
-    redirect_to root_path
+    redirect_to '/verification_form'
   end
 
   def login
@@ -40,10 +41,12 @@ class UsersController < ApplicationController
       flash[:error] = 'Email and/or password are incorrect'
       redirect_to '/login'
     else
-      session[:user_id] = response
+      session[:user_id] = response[:id]
       redirect_to '/community_round'
     end
   end
+
+  def verification_form; end
 
   private
 
