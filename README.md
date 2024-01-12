@@ -15,10 +15,10 @@
     <img src="images/logo_480.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Weather Together</h3>
+<h3 align="center">WeatherTogether</h3>
 
   <p align="center">
-    Weather Together is a game app where a daily set of weather data is displayed to the user (player) from a randomly selected location in the world. Each day the player guesses a location where they think this weather data was collected through an interactive map selector. They are able to keep track of prior guesses as well as track their progress on a leaderboard.
+    WeatherTogether is a game app where a daily set of weather data is displayed to the user (player) from a randomly selected location in the world. Each day the player guesses a location where they think this weather data was collected through an interactive map selector. They are able to keep track of prior guesses as well as track their progress on a leaderboard.
 
 The goal of this app is to provide public education and increase awareness of general global climate trends in a fun and interactive manner.
     <br />
@@ -195,7 +195,7 @@ See the [open issues](https://github.com/Weather-Together/weather_together_fe/is
 <!-- CONTACT -->
 ## Contact
 
-Organization: Weather Together - WeatherTogether2308@gmail.com
+Organization: WeatherTogether - WeatherTogether2308@gmail.com
 
 Organization Link: [https://github.com/Weather-Together](https://github.com/Weather-Together)
 
