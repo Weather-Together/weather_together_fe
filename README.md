@@ -160,20 +160,23 @@ This portion of the app handles the frontend functionality of the game:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] New User Creation
-    - [ ] Information Input
-    - [ ] Account verification and activation, through email link
-- [ ] User Login (Basic)
-- [ ] User Login (Expanded)
-    - [ ] Passwordless Login Using Google OAuth
-- [ ] Interactive Map Selector 
-    - [ ] Map Display
-    - [ ] Pin Drop at a Lat/Lon Upon Click
-    - [ ] Display of Current Pin Location, Submit
-- [ ] User Dashboard
-    - [ ] Recent User Rounds
-    - [ ] Daily Vote Submissions
-    - [ ] Most Recent Caulcated Results (4 Days Back)  
+- [x] New User Creation
+    - [x] Information Input
+    - [x] Account verification and activation, through email link
+- [x] User Login (Basic)
+- [x] User Login (Expanded)
+    - [x] Passwordless Login Using Google OAuth
+- [x] Interactive Map Selector (Community Round)
+    - [x] Map Display
+    - [x] Pin Drop at a Lat/Lon Upon Click
+    - [x] Display of Current Pin Location, Submit
+- [x] User UI Feedback
+    - [x] Pop-up Display with Messaging
+    - [x] Navigation Bar, Conditional Display
+- [x] User Dashboard
+    - [x] Recent User Rounds
+    - [x] Daily Vote Submissions
+    - [x] Most Recent Caulcated Results (4 Days Back)  
 - [ ] Mobile Functionality
 - [ ] Addition of Private Games
 
