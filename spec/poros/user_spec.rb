@@ -2,6 +2,13 @@ require 'spec_helper'
 require_relative '../../app/poros/user'
 
 RSpec.describe User do
+  it "exists" do
+    details = {
+      id: 1,
+      email: "user@example.com"
+    }
+
+    user = User.new(details)
   describe '#initialize' do
     it 'sets the id and email' do
       details = { id: 1, email: 'test@example.com' }
