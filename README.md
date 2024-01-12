@@ -149,9 +149,9 @@ This portion of the app handles the frontend functionality of the game:
 * Handles user account creation, verification, and login.
 * Provides the user interface for the app.
 * Collects user input through location guesses on an externally consumed interactive map and passes this information to the backend portion of the application.
+* User Feedback through messaging done through popup boxes.
 * Displays results to the user calculcated from the backend.
-
-* [Google OAuth](https://developers.google.com/identity/protocols/oauth2) is utilized for secure and convenient user authentication. It allows users to create a game acoount and to sign in with their Google credentials, ensuring a streamlined and familiar login process.
+* [Google OAuth](https://developers.google.com/identity/protocols/oauth2) is utilized for secure and convenient user authentication. It allows users to create a game account and to sign in with their Google credentials, ensuring a streamlined and familiar login process.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
